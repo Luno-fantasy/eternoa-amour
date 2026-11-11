@@ -32,7 +32,7 @@
   {
     "id": "rowan",
     "title": "その求婚、冗談ですよね？",
-    "characterName": "ローウェン",
+    "characterName": "ローウェン・アシュフォード",
     "cover": "covers/rowan.jpeg",
     "status": "published",
     "publishedAt": "2026-11-07",
@@ -67,7 +67,7 @@
   {
     "id": "felix",
     "title": "逃がした番を取り戻したい辺境伯の話",
-    "characterName": "フェリクス",
+    "characterName": "フェリクス・ヴァルグレイ",
     "relationships": [
       "番"
     ],
@@ -96,7 +96,7 @@
   {
     "id": "riku",
     "title": "うちの相方、ファンサが甘すぎる。",
-    "characterName": "璃久",
+    "characterName": "鳴海 璃久",
     "relationships": [
       "相方"
     ],
