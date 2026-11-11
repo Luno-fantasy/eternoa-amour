@@ -84,7 +84,10 @@ for (const work of works) {
   for (const item of work.gallery ?? []) asset(item.image);
 }
 for (const item of news) {
-  if (!validDate(item.date) || !item.title?.trim() || (item.workId && !ids.has(item.workId))) {
+  const status = item.status ?? 'published';
+  const dateValid = (status === 'draft' && item.date == null) || validDate(item.date);
+  if (!['draft', 'published'].includes(status) || !dateValid || !item.title?.trim() ||
+      (item.workId && !ids.has(item.workId))) {
     throw new Error('お知らせの日付・見出し・作品IDを確認してください。');
   }
 }
@@ -95,8 +98,8 @@ const detailWorks = visible.filter(work => !isUpcoming(work));
 const detailIds = new Set(detailWorks.map(work => work.id));
 visible.sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''));
 const visibleIds = new Set(visible.map(work => work.id));
-const updates = news.filter(item => !item.workId || visibleIds.has(item.workId))
-  .sort((a, b) => b.date.localeCompare(a.date));
+const updates = news.filter(item => (preview || item.status !== 'draft') && (!item.workId || visibleIds.has(item.workId)))
+  .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 const workUrl = work => 'titles/' + work.id + '/';
 const characterUrl = (work, person) => workUrl(work) + 'characters/' + person.id + '/';
 const paragraphs = value => value.split(/\n+/).filter(Boolean).map(line => '<p>' + esc(line) + '</p>').join('');
@@ -111,7 +114,8 @@ function layout({ base, route, active, title, description = motto, cover, body, 
   const pageTitle = title ? title + ' | ' + brand : brand;
   const og = (key, value) => `<meta property="og:${key}" content="${esc(value)}">`;
   const twitter = (key, value) => `<meta name="twitter:${key}" content="${esc(value)}">`;
-  const shareImage = cover ? new URL('images/' + cover, site).href : '';
+  const shareImage = new URL(cover ? 'images/' + cover : 'assets/brand/apple-touch-icon.png', site).href;
+  const shareImageAlt = cover ? title + 'のカバー' : brand + 'のアイコン';
   return `<!doctype html>
 <html lang="ja">
 <head>
@@ -126,8 +130,8 @@ ${preview || route === '404.html' ? '<meta name="robots" content="noindex, nofol
 ${og('site_name', brand)}${og('type', 'website')}${og('locale', 'ja_JP')}
 ${og('title', pageTitle)}${og('description', description)}${og('url', address)}
 ${twitter('card', 'summary')}${twitter('title', pageTitle)}${twitter('description', description)}
-${shareImage ? og('image', shareImage) + og('image:alt', title + 'のカバー') +
-  twitter('image', shareImage) + twitter('image:alt', title + 'のカバー') : ''}
+${og('image', shareImage)}${og('image:alt', shareImageAlt)}
+${twitter('image', shareImage)}${twitter('image:alt', shareImageAlt)}
 <link rel="stylesheet" href="${base}assets/style.css">
 ${script ? `<script src="${base}assets/filter.js" defer></script>` : ''}${illustrationViewer ? `<script src="${base}assets/character-viewer.js" defer></script>` : ''}
 </head>
@@ -167,9 +171,12 @@ const grid = (items, base) => '<ul class="cards">' + items.map(work => card(work
 const empty = message => '<p class="empty">' + message + '</p>';
 function newsList(items, base) {
   return items.length ? '<ul class="news-list">' + items.map(item =>
-    `<li><time datetime="${item.date}">${item.date.replaceAll('-', '.')}</time>
-      <div><p class="news-title">${detailIds.has(item.workId)
+    `<li>${item.status === 'draft' ? '<span class="news-date">下書き・公開日未定</span>' :
+      `<time datetime="${item.date}">${item.date.replaceAll('-', '.')}</time>`}
+      <div>${item.category ? '<p class="news-category">' + esc(item.category) + '</p>' : ''}
+      <p class="news-title">${detailIds.has(item.workId)
         ? `<a href="${base}titles/${item.workId}/">${esc(item.title)}</a>` : esc(item.title)}</p>
+      ${item.subtitle ? '<p class="tagline">' + esc(item.subtitle) + '</p>' : ''}
       ${item.body ? paragraphs(item.body) : ''}</div></li>`).join('') + '</ul>' : empty('お知らせはまだありません。');
 }
 const latest = visible.find(work => work.status === 'published') ?? (preview ? visible.find(work => work.cover && !isUpcoming(work)) : null);

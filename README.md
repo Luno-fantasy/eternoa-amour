@@ -8,7 +8,7 @@ Talelynxで公開するオリジナル恋愛作品のギャラリー。GitHub Pa
 npm run dev
 ```
 
-ブラウザで http://localhost:3000/ を開くと、提供済みカバーと作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品詳細と、`coming_soon` の一覧カードが出力されます。現在の作品はすべて `private` です。
+ブラウザで http://localhost:3000/ を開くと、提供済みカバーと作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品詳細と、`coming_soon` の一覧カードが出力されます。
 
 ## 作品の登録・更新
 
@@ -35,7 +35,9 @@ npm run dev
 
 ## 更新情報
 
-`data/news.json` に `date`（YYYY-MM-DD）、`title`、任意の `body` と `workId` を持つ項目を追加します。日付の新しい順に並び、HOMEには最新3件が表示されます。作品IDを指定した項目は、その作品が掲載対象のときに表示されます。
+`data/news.json` の項目には `title` が必須です。`category`、`subtitle`、段落を空行で区切った `body`、関連する作品の `workId` を任意で指定できます。公開済みのお知らせは日付の新しい順に並び、HOMEには最新3件が表示されます。作品IDを指定した項目は、その作品が掲載対象のときに表示されます。
+
+公開日が未定の項目は `status: "draft"` とし、`date` を省略します。確認用ビルドだけに下書きと明示して表示します。公開を承認した時点で正式な `date`（YYYY-MM-DD）を設定し、`status` を `published` に変更して `npm run build` を実行します。公開日は表示と並び順に使われ、指定日に自動公開される仕組みはありません。旧データでは `status` の省略を `published` として扱います。
 
 ## 公開
 

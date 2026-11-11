@@ -73,7 +73,9 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
 .news-list { padding: 0; margin: 1.5rem 0 0; list-style: none; }
 .news-list li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .8rem 0; border-top: 1px solid var(--line); }
 .news-list li:last-child { border-bottom: 1px solid var(--line); }
-.news-list time { font-variant-numeric: tabular-nums; color: var(--muted); }
+.news-list time, .news-date { font-variant-numeric: tabular-nums; color: var(--muted); }
+.news-category { font-size: .75rem; letter-spacing: .08em; color: var(--muted); }
+.news-title ~ p + p { margin-top: .55rem; }
 .news-title { font-family: var(--serif); }
 .empty { color: var(--muted); padding: 1rem 0; border-block: 1px solid var(--line); margin-top: 1.5rem; }
 .about-home { text-align: center; }
