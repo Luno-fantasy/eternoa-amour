@@ -29,7 +29,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.5; }
 .header { border-bottom: 1px solid #cdb28c42; }
 .header-inner, .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; }
 .header-inner { min-height: 92px; }
-.logo { text-decoration: none; display: inline-block; }
+.logo { text-decoration: none; display: inline-block; flex-shrink: 0; }
+.logo img { display: block; width: 204px; max-width: 100%; height: auto; }
+.footer .logo img { width: 166px; }
 .wordmark { display: inline-flex; flex-direction: column; align-items: center; font: 500 2rem/.88 var(--latin); letter-spacing: .1em; }
 .wordmark span { display: inline-flex; align-items: center; gap: .65em; margin-top: .6em; color: var(--gold); font: 600 .37em/1 var(--latin); letter-spacing: .42em; }
 .wordmark span::before, .wordmark span::after { content: ""; width: 1.1em; height: 1px; background: currentColor; opacity: .6; }
@@ -108,6 +110,7 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
 }
 @media (max-width: 660px) {
   .wrap { width: calc(100% - 2rem); }
+  .header .logo img { width: 180px; }
   .header-inner { flex-direction: column; justify-content: center; gap: .45rem; padding-top: .85rem; }
   nav { width: 100%; justify-content: space-evenly; }
   nav a { font-size: .86rem; min-height: 44px; }

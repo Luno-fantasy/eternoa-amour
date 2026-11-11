@@ -134,14 +134,14 @@ ${script ? `<script src="${base}assets/filter.js" defer></script>` : ''}${illust
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="header"><div class="wrap header-inner">
-<a class="logo" href="${base}" aria-label="${brand} ホーム">${wordmark}</a>
+<a class="logo" href="${base}" aria-label="${brand} ホーム"><img src="${base}assets/brand/site-logo.png" width="2172" height="724" alt=""></a>
 <nav aria-label="メインメニュー">${sections.map(([label, url]) =>
   `<a href="${base + url}"${active === label ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>
 </div></header>
 ${preview ? '<p class="preview-note">確認用プレビュー｜作品の公開情報は確認中です</p>' : ''}
 <main id="main">${body}</main>
 <footer class="footer"><div class="wrap footer-inner">
-<a class="logo" href="${base}" aria-label="${brand} ホーム">${wordmark}</a>
+<a class="logo" href="${base}" aria-label="${brand} ホーム"><img src="${base}assets/brand/site-logo.png" width="2172" height="724" alt=""></a>
 <a href="${base}about/">ブランドについて</a><small>© ÉTERNOA : AMOUR</small>
 </div></footer>
 </body></html>
@@ -324,7 +324,7 @@ function copy(from, to) {
   mkdirSync(dirname(target), { recursive: true });
   copyFileSync(from, target);
 }
-for (const name of ['style.css', 'filter.js', 'brand/favicon.png', 'brand/apple-touch-icon.png']) copy('source/' + name, 'assets/' + name);
+for (const name of ['style.css', 'filter.js', 'brand/favicon.png', 'brand/apple-touch-icon.png', 'brand/site-logo.png']) copy('source/' + name, 'assets/' + name);
 if (detailWorks.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
 for (const work of visible) {
   const images = isUpcoming(work) ? [work.cover].filter(Boolean) : [work.cover, ...(work.gallery ?? []).map(item => item.image),
