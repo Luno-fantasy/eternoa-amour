@@ -199,9 +199,10 @@ writeFileSync(join(staging, '404.html'), layout({
   </section>`
 }).replace(/[ \t]+$/gm, ''));
 write('', { base: './', active: 'HOME', body: `
+<section class="home-motto"><div class="wrap"><h1>物語の数だけ、恋がある。</h1></div></section>
+<section class="wrap section about-home">${heading('About', 'ブランド紹介')}${brandIntro}${button('about/', 'ブランドについて')}</section>
 <section class="hero"><div class="wrap hero-inner${latest ? '' : ' hero-solo'}">
   <div class="hero-copy">
-    <h1><span>物語の数だけ、</span><span>恋がある。</span></h1>
     ${latest ? `<div class="featured"><p class="eyebrow" lang="en">${latest.status === 'published' ? 'Latest Release' : 'Featured Title'}</p>
     <h2>${esc(latest.title)}</h2>
     ${latest.summary ? '<p>' + esc(latest.summary) + '</p>' : latest.tagline ? '<p class="tagline">' + esc(latest.tagline) + '</p>' : ''}
@@ -212,8 +213,7 @@ write('', { base: './', active: 'HOME', body: `
 <section class="wrap section"><div class="section-top">${heading('Romance Collection', '作品一覧')}${visible.length ? button('titles/', 'すべての作品') : ''}</div>
 ${visible.length ? grid(visible.slice(0, 4), './') : empty('掲載作品は準備中です。')}</section>
 <section class="news-band"><div class="wrap section"><div class="section-top">${heading('Latest News', '最新情報')}${button('news/', 'お知らせ一覧')}</div>
-${newsList(updates.slice(0, 3), './')}</div></section>
-<section class="wrap section about-home">${heading('About', 'ブランド紹介')}${brandIntro}${button('about/', 'ブランドについて')}</section>` });
+${newsList(updates.slice(0, 3), './')}</div></section>` });
 
 function select(key, label, options) {
   return `<label>${label}<select name="${key}"><option value="">すべて</option>${
