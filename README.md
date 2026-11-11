@@ -8,12 +8,12 @@ Talelynxで公開するオリジナル恋愛作品のギャラリー。GitHub Pa
 npm run dev
 ```
 
-ブラウザで http://localhost:3000/ を開くと、提供済みカバー5点と作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品だけが出力されます。現在、正式なTalelynx URL待ちのため公開用の掲載は0件です。
+ブラウザで http://localhost:3000/ を開くと、提供済みカバーと作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品詳細と、`coming_soon` の一覧カードが出力されます。現在の作品はすべて `private` です。
 
 ## 作品の登録・更新
 
 1. 正式カバーの原本を `source/covers/` に置きます。1:1の画像を使用します。追加画像は `source/gallery/<作品ID>/` に置きます。
-2. `data/titles.json` に作品情報を追加します。タイトル、人物名、短い紹介文、完成カバー、Talelynxでの公開日、正式な作品URLまたは個別ルートURLを確認してから `status` を `published` にします。
+2. `data/titles.json` に作品情報を追加します。タイトル、人物名、紹介文またはあらすじ、完成カバー、AMOURでの作品紹介の公開日を確認してから `status` を `published` にします。
 3. `npm run build` を実行し、データ、画像、更新された `docs/` を同じPRに含めます。公開済み作品は公開日の新しい順に表示され、先頭がHOMEの特集になります。作品IDは詳細URLに使われるため、公開後は維持します。
 
 | キー | 内容 |
@@ -25,10 +25,11 @@ npm run dev
 | `genres`, `relationships` | 絞り込み用の文字列配列 |
 | `cover` | `source/` からの画像パス。例 `covers/ashley.jpeg` |
 | `gallery` | `image` と代替テキスト `alt` を持つオブジェクトの配列 |
-| `talelynxUrl` | Talelynxの正式なHTTPS作品URL |
-| `publishedAt`, `updatedAt` | YYYY-MM-DD。公開日はTalelynxでの公開日 |
-| `status` | `published`、`coming-soon`、`private`。後者2つは公開ビルドの対象外 |
-| `rating` | 任意。`all-ages` または `r18`。R18は詳細に表示され、リンクに閲覧条件の案内が付きます |
+| `talelynxUrl` | 任意。Talelynxの正式なHTTPS作品URL。候補URLは `talelynxUrlCandidate` に保持できます |
+| `showTalelynxLink` | 作品のボタンを表示するか。初期値は `false`。作品が公開済みで正式URLがある場合に `true` で表示します |
+| `publishedAt`, `updatedAt` | YYYY-MM-DD。公開日はAMOURでの作品紹介の公開日 |
+| `status` | `published` は一覧・詳細に掲載、`coming_soon` は「公開予定」として一覧のみ、`private` は公開対象外。旧表記 `coming-soon` も利用できます |
+| `rating` | `unknown`（未確認・省略時の扱い）、`all-ages`、`r18`。確認済みの `r18` のみ作品詳細に表示し、ボタンを表示する場合は閲覧条件も案内します |
 
 紹介文と画像は全年齢向けの素材を登録します。プレイヤー設定が可変の作品は、紹介でも可変のまま扱います。Talelynxでログイン画面や年齢確認が表示された場合は、権限のある閲覧状態で正式URLを確認します。公開用フォルダは `docs/` です。公開リポジトリの場合、ソースやPRも閲覧可能なので、未公開原稿や非公開素材は手元で管理してください。
 
@@ -48,9 +49,9 @@ npm run dev
 | --- | --- |
 | `profile`, `introduction`, `quote` | プロフィール、紹介文、台詞。空欄は表示されません |
 | `image`, `imageAlt` | 提供済み人物画像の `source/` 相対パスと代替テキスト |
-| `talelynxUrl`, `rating` | 人物ルートの正式URLと年齢区分。年齢区分の省略時は作品の値を使います |
+| `talelynxUrl`, `rating` | 人物ルートの正式URLと年齢区分。年齢区分の省略時は作品の値を使います。未確認の個別ルートは `unknown` を明示できます |
 
-作品詳細は `titles/<作品ID>/`、人物プロフィール兼ルート案内は `titles/<作品ID>/characters/<人物ID>/` です。作品共通のTalelynx URLは作品側に、個別ルートのURLは各人物に登録します。公開には共通URLまたは個別ルートURLが必要です。既存の `characterName` と `character` だけの作品も表示できます。検索は旧人物名欄と人物配列の名前を対象にします。
+作品詳細は `titles/<作品ID>/`、人物プロフィール兼ルート案内は `titles/<作品ID>/characters/<人物ID>/` です。作品共通のTalelynx URLは作品側に、個別ルートのURLは各人物に登録します。作品紹介はTalelynx URLの有無と独立して公開できます。人物のボタンは既存の正式URLがある場合に表示し、人物側の `showTalelynxLink: false` で保留できます。既存の `characterName` と `character` だけの作品も表示できます。検索は旧人物名欄と人物配列の名前を対象にします。
 
 `npm run dev` で作品一覧から「単独作品｜表示サンプル」「6人作品｜表示サンプル」を開けます。サンプルのデータは `data/character-previews.json` にあり、公開ビルドには含まれません。
 

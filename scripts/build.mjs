@@ -33,13 +33,25 @@ function asset(path) {
 const validId = value => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 const characters = work => work.characters ?? [];
 const names = work => [work.characterName, ...characters(work).map(person => person.name)].filter(Boolean);
+const isUpcoming = work => work.status === 'coming_soon' || work.status === 'coming-soon';
+const ratings = ['unknown', 'all-ages', 'r18'];
+function validateLinkSettings(record, label) {
+  if (record.talelynxUrl && !talelynxLink(record.talelynxUrl)) throw new Error(label + ': Talelynx URL');
+  if (record.showTalelynxLink !== undefined && typeof record.showTalelynxLink !== 'boolean') {
+    throw new Error(label + ': showTalelynxLink は true または false を指定してください。');
+  }
+  if (record.rating !== undefined && !ratings.includes(record.rating)) throw new Error(label + ': rating');
+}
 const ids = new Set();
 for (const work of works) {
   if (!validId(work.id) || ids.has(work.id)) {
     throw new Error('作品IDを確認してください: ' + work.id);
   }
   ids.add(work.id);
-  if (!['published', 'coming-soon', 'private'].includes(work.status)) throw new Error(work.id + ': status');
+  if (work.status !== 'published' && work.status !== 'private' && !isUpcoming(work)) {
+    throw new Error(work.id + ': status');
+  }
+  validateLinkSettings(work, work.id);
   const characterIds = new Set();
   for (const person of characters(work)) {
     if (!validId(person.id) || characterIds.has(person.id) || !person.name?.trim()) {
@@ -47,8 +59,7 @@ for (const work of works) {
     }
     characterIds.add(person.id);
     if (person.image) asset(person.image);
-    if (person.talelynxUrl && !talelynxLink(person.talelynxUrl)) throw new Error(work.id + ': 人物ルートURL');
-    if (person.rating && !['all-ages', 'r18'].includes(person.rating)) throw new Error(work.id + ': 人物ルートのrating');
+    validateLinkSettings(person, work.id + '/' + person.id);
   }
   if (work.characterDisplay === 'illustrations') {
     const assigned = new Set();
@@ -63,14 +74,12 @@ for (const work of works) {
     }
     if (!assigned.size || assigned.size !== characterIds.size) throw new Error(work.id + ': 全員の紹介画像が必要です。');
   }
-  if (work.talelynxUrl && !talelynxLink(work.talelynxUrl)) throw new Error(work.id + ': Talelynx作品URL');
+  if (isUpcoming(work) && !work.title?.trim()) throw new Error(work.id + ': 公開予定作品のタイトルが必要です。');
   if (work.status === 'published' && (!work.title?.trim() || !names(work).some(name => name.trim()) ||
-      !work.cover || !work.summary?.trim() || !validDate(work.publishedAt) ||
-      !(work.talelynxUrl || characters(work).some(person => person.talelynxUrl)))) {
-    throw new Error(work.id + ': タイトル、人物名、正式カバー、紹介文、公開日、Talelynxの作品URLまたは個別ルートURLが必要です。');
+      !work.cover || !(work.summary?.trim() || work.story?.trim()) || !validDate(work.publishedAt))) {
+    throw new Error(work.id + ': タイトル、人物名、正式カバー、紹介文またはあらすじ、作品紹介の公開日が必要です。');
   }
   if (work.updatedAt && !validDate(work.updatedAt)) throw new Error(work.id + ': updatedAt');
-  if (work.rating && !['all-ages', 'r18'].includes(work.rating)) throw new Error(work.id + ': rating');
   if (work.cover) asset(work.cover);
   for (const item of work.gallery ?? []) asset(item.image);
 }
@@ -80,7 +89,10 @@ for (const item of news) {
   }
 }
 
-const visible = works.filter(work => work.status === 'published' || (preview && (work.cover || work.previewOnly)));
+const visible = works.filter(work => work.status === 'published' || isUpcoming(work) ||
+  (preview && (work.cover || work.previewOnly)));
+const detailWorks = visible.filter(work => !isUpcoming(work));
+const detailIds = new Set(detailWorks.map(work => work.id));
 visible.sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''));
 const visibleIds = new Set(visible.map(work => work.id));
 const updates = news.filter(item => !item.workId || visibleIds.has(item.workId))
@@ -138,11 +150,13 @@ function coverImage(work, base, priority = false) {
   width="1254" height="1254" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 function card(work, base) {
+  const cardBody = `${work.cover ? coverImage(work, base) : ''}
+  <div class="card-info">${work.genres?.length ? '<p class="tags">' + esc(work.genres.join(' / ')) + '</p>' : ''}
+  ${isUpcoming(work) ? '<p class="tags">公開予定</p>' : ''}
+  <h3>${esc(work.title)}</h3></div>`;
   return `<li class="card" data-title="${esc(work.title)}" data-characters="${esc(JSON.stringify(names(work)))}"
   data-genres="${esc(JSON.stringify(work.genres ?? []))}" data-relationships="${esc(JSON.stringify(work.relationships ?? []))}">
-  <a class="card-link" href="${base + workUrl(work)}">${work.cover ? coverImage(work, base) : ''}
-  <div class="card-info">${work.genres?.length ? '<p class="tags">' + esc(work.genres.join(' / ')) + '</p>' : ''}
-  <h3>${esc(work.title)}</h3></div></a>
+  ${isUpcoming(work) ? cardBody : '<a class="card-link" href="' + base + workUrl(work) + '">' + cardBody + '</a>'}
   ${work.summary ? '<p class="card-summary">' + esc(work.summary) + '</p>' : ''}</li>`;
 }
 const grid = (items, base) => '<ul class="cards">' + items.map(work => card(work, base)).join('') + '</ul>';
@@ -150,11 +164,11 @@ const empty = message => '<p class="empty">' + message + '</p>';
 function newsList(items, base) {
   return items.length ? '<ul class="news-list">' + items.map(item =>
     `<li><time datetime="${item.date}">${item.date.replaceAll('-', '.')}</time>
-      <div><p class="news-title">${item.workId
+      <div><p class="news-title">${detailIds.has(item.workId)
         ? `<a href="${base}titles/${item.workId}/">${esc(item.title)}</a>` : esc(item.title)}</p>
       ${item.body ? paragraphs(item.body) : ''}</div></li>`).join('') + '</ul>' : empty('お知らせはまだありません。');
 }
-const latest = visible.find(work => work.status === 'published') ?? (preview ? visible[0] : null);
+const latest = visible.find(work => work.status === 'published') ?? (preview ? visible.find(work => work.cover && !isUpcoming(work)) : null);
 const brandIntro = '<p>ÉTERNOA : AMOURは、Talelynxで公開するオリジナル恋愛作品を集めた、ÉTERNOAの姉妹ブランドです。</p>';
 
 function write(route, config) {
@@ -259,12 +273,13 @@ function characterSection(work, base) {
       </a></li>`).join('')}</ul>`;
   return `<section class="detail-section" id="characters">${heading('Character', '登場人物')}${content}</section>`;
 }
-for (const work of visible) {
+for (const work of detailWorks) {
   const base = '../../';
   const detail = (label, japanese, value) => value?.trim() ?
     `<section class="detail-section">${heading(label, japanese)}${paragraphs(value)}</section>` : '';
-  const play = work.status === 'published' ? playLink(work.talelynxUrl, work.rating) : '';
-  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.title, cover: work.cover, illustrationViewer: work.characterDisplay === 'illustrations', body: `
+  const play = work.status === 'published' && work.showTalelynxLink === true
+    ? playLink(work.talelynxUrl, work.rating) : '';
+  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.story?.split(/\n+/)[0] ?? work.title, cover: work.cover, illustrationViewer: work.characterDisplay === 'illustrations', body: `
   <section class="detail-hero"><div class="wrap">
   <a class="back" href="../">← 作品一覧</a><div class="detail-intro${work.cover ? '' : ' text-only'}">
   ${work.cover ? coverImage(work, base, true) : ''}<div>
@@ -288,7 +303,7 @@ for (const work of visible) {
     if (work.characterDisplay === 'illustrations' && !person.talelynxUrl) continue;
     const characterBase = '../../../../';
     const rating = person.rating ?? work.rating;
-    const routeLink = work.status === 'published' ? person.talelynxUrl : undefined;
+    const routeLink = work.status === 'published' && person.showTalelynxLink !== false ? person.talelynxUrl : undefined;
     write(characterUrl(work, person), {
       base: characterBase,
       title: person.name + ' | ' + work.title,
@@ -308,9 +323,9 @@ function copy(from, to) {
   copyFileSync(from, target);
 }
 for (const name of ['style.css', 'filter.js']) copy('source/' + name, 'assets/' + name);
-if (visible.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
+if (detailWorks.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
 for (const work of visible) {
-  const images = [work.cover, ...(work.gallery ?? []).map(item => item.image),
+  const images = isUpcoming(work) ? [work.cover].filter(Boolean) : [work.cover, ...(work.gallery ?? []).map(item => item.image),
     ...characters(work).map(person => person.image),
     ...(work.characterIllustrations ?? []).map(panel => panel.image)].filter(Boolean);
   for (const path of new Set(images)) {
