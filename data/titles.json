@@ -2,13 +2,27 @@
   {
     "id": "ashley",
     "title": "悪女と黒狼公爵の偽装夫婦事情",
-    "characterName": "アシュレイ",
+    "characterName": "アシュレイ・ヴァン・ルーベルト",
     "tagline": "離婚前提で結婚したはずの公爵が",
-    "summary": "愛のない契約結婚。離婚前提で始まった偽装夫婦の生活で、黒狼公爵はなぜか妻にだけ過保護だった。",
-    "relationships": ["偽装夫婦"],
+    "summary": "愛のない契約結婚。離婚を前提に始まった偽装夫婦の生活で、冷酷と恐れられる黒狼公爵は、なぜか妻にだけ過保護だった。",
+    "relationships": [
+      "偽装夫婦"
+    ],
     "cover": "covers/ashley.jpeg",
+    "talelynxUrlCandidate": "https://talelynx.ai/chats/52867/info",
     "publishedAt": "2026-11-11",
-    "status": "private"
+    "status": "private",
+    "characters": [
+      {
+        "id": "ashley",
+        "name": "アシュレイ・ヴァン・ルーベルト",
+        "profile": "年齢　31歳\n身長　191cm\n立場　ヴァルディア帝国公爵／帝国軍最高司令官\n異名　黒狼公、帝国の処刑人\n容姿　漆黒の髪、深紅の瞳、銀手袋",
+        "introduction": "合理主義で冷酷に見えるが、本質は人を守る不器用な世話焼き。感情表現が苦手で、妻に対して強い保護欲と独占欲を抱く。",
+        "quote": "「勝手に死ぬな」"
+      }
+    ],
+    "world": "大陸最大の帝国《ヴァルディア》を舞台とする、貴族社会と帝国軍が存在するファンタジー世界。",
+    "relationship": "互いの利益のため、離婚を前提に契約結婚したふたり。偽りの夫婦関係から、少しずつ本物の愛情が育まれていく。\n「悪女」は、プレイヤーに対する世間の評判を指します。評判の真偽や理由、プレイヤーの過去・性格・性別は自由に設定できます。"
   },
   {
     "id": "rowan",
@@ -21,7 +35,9 @@
     "id": "felix",
     "title": "逃がした番を取り戻したい辺境伯の話",
     "characterName": "フェリクス",
-    "relationships": ["番"],
+    "relationships": [
+      "番"
+    ],
     "cover": "covers/felix.jpeg",
     "status": "private"
   },
@@ -29,7 +45,9 @@
     "id": "riku",
     "title": "うちの相方、ファンサが甘すぎる。",
     "characterName": "璃久",
-    "relationships": ["相方"],
+    "relationships": [
+      "相方"
+    ],
     "cover": "covers/riku.jpeg",
     "status": "private"
   },
@@ -39,7 +57,9 @@
     "characterName": "鷲尾 泰雅",
     "tagline": "結婚3年目。それでも、俺はお前に夢中だ。",
     "character": "鷲尾 泰雅｜38歳｜鷲尾組 組長",
-    "relationships": ["夫婦"],
+    "relationships": [
+      "夫婦"
+    ],
     "cover": "covers/taiga.jpeg",
     "status": "private"
   }
