@@ -122,7 +122,7 @@ function layout({ base, route, active, title, description = motto, cover, body, 
 <link rel="apple-touch-icon" sizes="180x180" href="${base}assets/brand/apple-touch-icon.png">
 <title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(description)}">
-${preview ? '<meta name="robots" content="noindex, nofollow">' : `<link rel="canonical" href="${address}">`}
+${preview || route === '404.html' ? '<meta name="robots" content="noindex, nofollow">' : `<link rel="canonical" href="${address}">`}
 ${og('site_name', brand)}${og('type', 'website')}${og('locale', 'ja_JP')}
 ${og('title', pageTitle)}${og('description', description)}${og('url', address)}
 ${twitter('card', 'summary')}${twitter('title', pageTitle)}${twitter('description', description)}
@@ -180,6 +180,15 @@ function write(route, config) {
 }
 rmSync(staging, { recursive: true, force: true });
 mkdirSync(staging, { recursive: true });
+const missingPageBase = preview ? '/' : new URL(site).pathname;
+writeFileSync(join(staging, '404.html'), layout({
+  base: missingPageBase, route: '404.html', title: 'ページが見つかりません',
+  description: '指定されたページは見つかりませんでした。',
+  body: `<section class="wrap section">
+    <div class="section-top"><h1>ページが見つかりません</h1></div>
+    ${button(missingPageBase + 'titles/', '作品一覧へ')}
+  </section>`
+}).replace(/[ \t]+$/gm, ''));
 write('', { base: './', active: 'HOME', body: `
 <section class="hero"><div class="wrap hero-inner${latest ? '' : ' hero-solo'}">
   <div class="hero-copy">
@@ -257,7 +266,7 @@ function illustratedCharacters(work, base) {
       <button type="button" class="viewer-zoom" aria-pressed="false">拡大</button>
       <form method="dialog"><button type="submit">閉じる</button></form>
     </div>
-    <div class="viewer-scroll" tabindex="0"><img alt=""></div>
+    <div class="viewer-scroll" tabindex="0" role="region" aria-label="拡大画像"></div>
   </dialog>
   </section>`;
 }

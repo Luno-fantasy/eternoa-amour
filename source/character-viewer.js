@@ -1,7 +1,9 @@
 const viewer = document.querySelector('.character-viewer');
-const image = viewer.querySelector('img');
 const scrollArea = viewer.querySelector('.viewer-scroll');
 const zoom = viewer.querySelector('.viewer-zoom');
+const image = document.createElement('img');
+image.alt = '';
+scrollArea.append(image);
 
 function setZoom(expanded) {
   scrollArea.classList.toggle('is-zoomed', expanded);
