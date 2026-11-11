@@ -118,6 +118,8 @@ function layout({ base, route, active, title, description = motto, cover, body, 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#211A2C">
+<link rel="icon" type="image/png" sizes="32x32" href="${base}assets/brand/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="${base}assets/brand/apple-touch-icon.png">
 <title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(description)}">
 ${preview ? '<meta name="robots" content="noindex, nofollow">' : `<link rel="canonical" href="${address}">`}
@@ -322,7 +324,7 @@ function copy(from, to) {
   mkdirSync(dirname(target), { recursive: true });
   copyFileSync(from, target);
 }
-for (const name of ['style.css', 'filter.js']) copy('source/' + name, 'assets/' + name);
+for (const name of ['style.css', 'filter.js', 'brand/favicon.png', 'brand/apple-touch-icon.png']) copy('source/' + name, 'assets/' + name);
 if (detailWorks.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
 for (const work of visible) {
   const images = isUpcoming(work) ? [work.cover].filter(Boolean) : [work.cover, ...(work.gallery ?? []).map(item => item.image),
