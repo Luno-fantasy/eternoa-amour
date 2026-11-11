@@ -152,14 +152,16 @@ function coverImage(work, base, priority = false) {
   width="1254" height="1254" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 function card(work, base) {
+  const cast = [...new Set(names(work))];
   const cardBody = `${work.cover ? coverImage(work, base) : ''}
   <div class="card-info">${work.genres?.length ? '<p class="tags">' + esc(work.genres.join(' / ')) + '</p>' : ''}
   ${isUpcoming(work) ? '<p class="tags">公開予定</p>' : ''}
-  <h3>${esc(work.title)}</h3></div>`;
+  <h3>${esc(work.title)}</h3>
+  ${cast.length ? '<p class="card-cast">' + esc(cast.join('、')) + '</p>' : ''}</div>`;
   return `<li class="card" data-title="${esc(work.title)}" data-characters="${esc(JSON.stringify(names(work)))}"
   data-genres="${esc(JSON.stringify(work.genres ?? []))}" data-relationships="${esc(JSON.stringify(work.relationships ?? []))}">
   ${isUpcoming(work) ? cardBody : '<a class="card-link" href="' + base + workUrl(work) + '">' + cardBody + '</a>'}
-  ${work.summary ? '<p class="card-summary">' + esc(work.summary) + '</p>' : ''}</li>`;
+  </li>`;
 }
 const grid = (items, base) => '<ul class="cards">' + items.map(work => card(work, base)).join('') + '</ul>';
 const empty = message => '<p class="empty">' + message + '</p>';
