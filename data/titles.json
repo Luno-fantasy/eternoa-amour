@@ -1,0 +1,46 @@
+[
+  {
+    "id": "ashley",
+    "title": "悪女と黒狼公爵の偽装夫婦事情",
+    "characterName": "アシュレイ",
+    "tagline": "離婚前提で結婚したはずの公爵が",
+    "summary": "愛のない契約結婚。離婚前提で始まった偽装夫婦の生活で、黒狼公爵はなぜか妻にだけ過保護だった。",
+    "relationships": ["偽装夫婦"],
+    "cover": "covers/ashley.jpeg",
+    "publishedAt": "2026-11-11",
+    "status": "private"
+  },
+  {
+    "id": "rowan",
+    "title": "その求婚、冗談ですよね？",
+    "characterName": "ローウェン",
+    "cover": "covers/rowan.jpeg",
+    "status": "private"
+  },
+  {
+    "id": "felix",
+    "title": "逃がした番を取り戻したい辺境伯の話",
+    "characterName": "フェリクス",
+    "relationships": ["番"],
+    "cover": "covers/felix.jpeg",
+    "status": "private"
+  },
+  {
+    "id": "riku",
+    "title": "うちの相方、ファンサが甘すぎる。",
+    "characterName": "璃久",
+    "relationships": ["相方"],
+    "cover": "covers/riku.jpeg",
+    "status": "private"
+  },
+  {
+    "id": "taiga",
+    "title": "組長、奥様に夢中です",
+    "characterName": "鷲尾 泰雅",
+    "tagline": "結婚3年目。それでも、俺はお前に夢中だ。",
+    "character": "鷲尾 泰雅｜38歳｜鷲尾組 組長",
+    "relationships": ["夫婦"],
+    "cover": "covers/taiga.jpeg",
+    "status": "private"
+  }
+]
