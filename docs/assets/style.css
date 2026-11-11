@@ -105,6 +105,12 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
 .detail-body { max-width: 940px; padding-bottom: 2.5rem; }
 .detail-body:empty { display: none; }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.gallery-image { display: block; min-width: 0; cursor: zoom-in; }
+.gallery-image:only-child { grid-column: 1 / -1; width: min(100%, 38rem); }
+.gallery-image img { display: block; width: 100%; height: auto; }
+@media (max-width: 660px) {
+  .gallery { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width: 950px) {
   .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

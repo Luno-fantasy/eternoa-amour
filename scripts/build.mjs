@@ -249,6 +249,15 @@ function profile(person, base, level) {
   ${person.introduction ? paragraphs(person.introduction) : ''}
   </div></article>`;
 }
+function imageViewer(label) {
+  return `<dialog class="character-viewer" aria-label="${label}">
+    <div class="viewer-controls">
+      <button type="button" class="viewer-zoom" aria-pressed="false">拡大</button>
+      <form method="dialog"><button type="submit">閉じる</button></form>
+    </div>
+    <div class="viewer-scroll" tabindex="0" role="region" aria-label="拡大画像"></div>
+  </dialog>`;
+}
 function illustratedCharacters(work, base) {
   const cast = new Map(characters(work).map(person => [person.id, person.name]));
   const panels = work.characterIllustrations.map(panel => {
@@ -261,13 +270,7 @@ function illustratedCharacters(work, base) {
   return `<section class="detail-section illustrated-characters" id="characters">
   ${heading('Characters', '登場人物')}<p class="illustration-hint">画像を選ぶと拡大できます</p>
   <ul>${panels}</ul>
-  <dialog class="character-viewer" aria-label="キャラクター紹介画像">
-    <div class="viewer-controls">
-      <button type="button" class="viewer-zoom" aria-pressed="false">拡大</button>
-      <form method="dialog"><button type="submit">閉じる</button></form>
-    </div>
-    <div class="viewer-scroll" tabindex="0" role="region" aria-label="拡大画像"></div>
-  </dialog>
+  ${imageViewer('キャラクター紹介画像')}
   </section>`;
 }
 function characterSection(work, base) {
@@ -284,13 +287,29 @@ function characterSection(work, base) {
       </a></li>`).join('')}</ul>`;
   return `<section class="detail-section" id="characters">${heading('Character', '登場人物')}${content}</section>`;
 }
+function gallerySection(work, base) {
+  if (!work.gallery?.length) return '';
+  const items = work.gallery.map(item => {
+    const image = base + 'images/' + esc(item.image);
+    const alt = esc(item.alt ?? '');
+    const dimensions = item.width && item.height ? ` width="${esc(item.width)}" height="${esc(item.height)}"` : '';
+    return `<a class="gallery-image" href="${image}" aria-label="${alt ? alt + 'を拡大' : 'ギャラリー画像を拡大'}">
+      <img src="${image}" alt="${alt}"${dimensions} loading="lazy" decoding="async"></a>`;
+  }).join('');
+  return `<section class="detail-section" id="gallery">${heading('Gallery', 'ギャラリー')}
+  <p class="illustration-hint">画像を選ぶと拡大できます</p>
+  <div class="gallery">${items}</div>
+  ${work.characterDisplay === 'illustrations' ? '' : imageViewer('ギャラリー画像')}
+  </section>`;
+}
+const hasImageViewer = work => work.characterDisplay === 'illustrations' || Boolean(work.gallery?.length);
 for (const work of detailWorks) {
   const base = '../../';
   const detail = (label, japanese, value) => value?.trim() ?
     `<section class="detail-section">${heading(label, japanese)}${paragraphs(value)}</section>` : '';
   const play = work.status === 'published' && work.showTalelynxLink === true
     ? playLink(work.talelynxUrl, work.rating) : '';
-  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.story?.split(/\n+/)[0] ?? work.title, cover: work.cover, illustrationViewer: work.characterDisplay === 'illustrations', body: `
+  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.story?.split(/\n+/)[0] ?? work.title, cover: work.cover, illustrationViewer: hasImageViewer(work), body: `
   <section class="detail-hero"><div class="wrap">
   <a class="back" href="../">← 作品一覧</a><div class="detail-intro${work.cover ? '' : ' text-only'}">
   ${work.cover ? coverImage(work, base, true) : ''}<div>
@@ -306,9 +325,7 @@ for (const work of detailWorks) {
   ${characterSection(work, base)}
   ${detail('World', '世界観', work.world)}
   ${detail('Relationship', '関係性', work.relationship ?? work.relationships?.join(' / '))}
-  ${work.gallery?.length ? `<section class="detail-section">${heading('Gallery', 'ギャラリー')}
-  <div class="gallery">${work.gallery.map(item => `<img src="${base}images/${esc(item.image)}"
-  alt="${esc(item.alt ?? '')}" loading="lazy" decoding="async">`).join('')}</div></section>` : ''}
+  ${gallerySection(work, base)}
   </div>` });
   for (const person of characters(work)) {
     if (work.characterDisplay === 'illustrations' && !person.talelynxUrl) continue;
@@ -334,7 +351,7 @@ function copy(from, to) {
   copyFileSync(from, target);
 }
 for (const name of ['style.css', 'filter.js', 'brand/favicon.png', 'brand/apple-touch-icon.png', 'brand/site-logo.png']) copy('source/' + name, 'assets/' + name);
-if (detailWorks.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
+if (detailWorks.some(hasImageViewer)) copy('source/character-viewer.js', 'assets/character-viewer.js');
 for (const work of visible) {
   const images = isUpcoming(work) ? [work.cover].filter(Boolean) : [work.cover, ...(work.gallery ?? []).map(item => item.image),
     ...characters(work).map(person => person.image),

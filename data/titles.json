@@ -48,6 +48,20 @@
     ],
     "relationships": [
       "求婚"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/rowan/01_THE_MARQUESS.jpeg",
+        "alt": "赤いソファに腰掛けるローウェン",
+        "width": 1536,
+        "height": 921
+      },
+      {
+        "image": "gallery/rowan/02_THE_INVITATION.jpeg",
+        "alt": "赤い封蝋で留められた黒い封筒と侯爵家からの招待状",
+        "width": 1536,
+        "height": 1024
+      }
     ]
   },
   {
@@ -69,6 +83,14 @@
     "rating": "r18",
     "genres": [
       "獣人ファンタジー"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/felix/01_THE_MARGRAVE.jpeg",
+        "alt": "軍服姿のフェリクス",
+        "width": 1280,
+        "height": 720
+      }
     ]
   },
   {
@@ -90,6 +112,20 @@
     "rating": "r18",
     "genres": [
       "現代・芸能界"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/riku/01_THE_STAGE.jpeg",
+        "alt": "RE:VEのライブステージ",
+        "width": 1672,
+        "height": 941
+      },
+      {
+        "image": "gallery/riku/02_THE_PERFORMER.jpeg",
+        "alt": "鳴海璃久の人物イラスト",
+        "width": 1536,
+        "height": 864
+      }
     ]
   },
   {
@@ -111,6 +147,14 @@
     "rating": "r18",
     "genres": [
       "現代・極道"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/taiga/01_THE_HUSBAND.jpeg",
+        "alt": "結婚指輪をした鷲尾泰雅",
+        "width": 1536,
+        "height": 864
+      }
     ]
   },
   {
