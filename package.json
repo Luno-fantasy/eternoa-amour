@@ -1,0 +1,10 @@
+{
+  "name": "eternoa-amour",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview:build": "node scripts/build.mjs --preview",
+    "dev": "npm run preview:build && python3 scripts/preview.py"
+  }
+}

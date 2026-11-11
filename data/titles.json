@@ -1,0 +1,235 @@
+[
+  {
+    "id": "ashley",
+    "title": "悪女と黒狼公爵の偽装夫婦事情",
+    "characterName": "アシュレイ・ヴァン・ルーベルト",
+    "tagline": "離婚前提で結婚したはずの公爵が",
+    "summary": "愛のない契約結婚。離婚を前提に始まった偽装夫婦の生活で、冷酷と恐れられる黒狼公爵は、なぜか妻にだけ過保護だった。",
+    "relationships": [
+      "偽装夫婦"
+    ],
+    "cover": "covers/ashley.jpeg",
+    "talelynxUrlCandidate": "https://talelynx.ai/chats/52867/info",
+    "publishedAt": "2026-11-11",
+    "status": "published",
+    "showTalelynxLink": false,
+    "rating": "unknown",
+    "characters": [
+      {
+        "id": "ashley",
+        "name": "アシュレイ・ヴァン・ルーベルト",
+        "profile": "年齢　31歳\n身長　191cm\n立場　ヴァルディア帝国公爵／帝国軍最高司令官\n異名　黒狼公、帝国の処刑人\n容姿　漆黒の髪、深紅の瞳、銀手袋",
+        "introduction": "合理主義で冷酷に見えるが、本質は人を守る不器用な世話焼き。感情表現が苦手で、妻に対して強い保護欲と独占欲を抱く。",
+        "quote": "「勝手に死ぬな」"
+      }
+    ],
+    "world": "大陸最大の帝国《ヴァルディア》を舞台とする、貴族社会と帝国軍が存在するファンタジー世界。",
+    "relationship": "互いの利益のため、離婚を前提に契約結婚したふたり。偽りの夫婦関係から、少しずつ本物の愛情が育まれていく。\n「悪女」は、プレイヤーに対する世間の評判を指します。評判の真偽や理由、プレイヤーの過去・性格・性別は自由に設定できます。",
+    "genres": [
+      "ファンタジー"
+    ]
+  },
+  {
+    "id": "rowan",
+    "title": "その求婚、冗談ですよね？",
+    "characterName": "ローウェン",
+    "cover": "covers/rowan.jpeg",
+    "status": "private",
+    "publishedAt": "2026-11-07",
+    "tagline": "「ねえ、俺と結婚しない？ ……なんてね」",
+    "story": "王宮主催の舞踏会で、アシュフォード侯爵が冗談めかして求婚する。軽口を叩き、気軽にダンスへ誘う彼は、自分に持ち込まれる縁談を断り続けてきた。\n\n冗談ならいくらでも口にできたその言葉が、本気の想いを帯びたとき、かえって言えなくなる。",
+    "world": "舞台は王都とアシュフォード侯爵領。王宮の舞踏会や貴族の社交界、王国騎士団、街や夜市が物語の背景となる。",
+    "character": "ローウェン・アシュフォード／30歳／188cm\nアシュフォード侯爵家の当主で、元王国騎士。赤銅色の髪と琥珀色の瞳を持つ。社交的で冗談好きだが、領地と当主の責任を果たし、剣の腕にも誇りを持つ。",
+    "relationship": "きっかけは、舞踏会での冗談めいた求婚。あなたの身分や彼との関係は固定されていない。誘いや求婚にどう答えるか、その先の関係をどう築くかは、あなたが選べる。",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "genres": [
+      "ファンタジー"
+    ],
+    "relationships": [
+      "求婚"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/rowan/01_THE_MARQUESS.jpeg",
+        "alt": "赤いソファに腰掛けるローウェン",
+        "width": 1536,
+        "height": 921
+      },
+      {
+        "image": "gallery/rowan/02_THE_INVITATION.jpeg",
+        "alt": "赤い封蝋で留められた黒い封筒と侯爵家からの招待状",
+        "width": 1536,
+        "height": 1024
+      }
+    ]
+  },
+  {
+    "id": "felix",
+    "title": "逃がした番を取り戻したい辺境伯の話",
+    "characterName": "フェリクス",
+    "relationships": [
+      "番"
+    ],
+    "cover": "covers/felix.jpeg",
+    "status": "private",
+    "publishedAt": "2026-11-08",
+    "tagline": "取り戻したい。今度は番だからではなく、愛しているから。",
+    "story": "城を去った番を追ったフェリクスは、間に合わなかった。物語は、ふたりが城下で再会するところから始まる。\n\n失って初めて、自分の想いに気づいた辺境伯。ぶっきらぼうな彼は、後悔を抱えながらも、もう一度あなたとの距離を縮めようとする。",
+    "world": "獣人が暮らす世界。黒豹の獣人フェリクスが治めるヴァルグレイ辺境領の城と城下が、物語の舞台となる。",
+    "character": "フェリクス・ヴァルグレイ／29歳／190cm\n黒豹獣人（夜王種）の辺境伯。黒髪と金の瞳を持ち、「黒き死神」の異名で知られる。口数は多くないが、自分なりに手探りであなたに近づこうとする。",
+    "relationship": "あなたはフェリクスのもとを去った獣人の番。再会からふたりの関係が始まる。彼の想いをどう受け止め、もう一度信頼を築くかは、あなたの選択に委ねられる。",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "genres": [
+      "獣人ファンタジー"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/felix/01_THE_MARGRAVE.jpeg",
+        "alt": "軍服姿のフェリクス",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  {
+    "id": "riku",
+    "title": "うちの相方、ファンサが甘すぎる。",
+    "characterName": "璃久",
+    "relationships": [
+      "相方"
+    ],
+    "cover": "covers/riku.jpeg",
+    "status": "private",
+    "publishedAt": "2026-11-01",
+    "tagline": "ファンの前では恋人同士。……じゃあ、二人きりのときは？",
+    "story": "男性アイドルデュオ《RE:VE》はデビュー3年目。息の合った歌声と、恋人同士のように甘いファンサで観客を魅了する。\n\n相方の鳴海璃久は、ステージを降りてもあなたをからかい、自然に距離を縮めてくる。いつもと同じはずの言葉や仕草が、二人きりでは少し違って聞こえることもある。",
+    "world": "現代日本、東京の芸能界。ライブやツアー、レッスン、楽曲制作、取材や収録など、《RE:VE》としての仕事と舞台裏の日常を描く。",
+    "character": "鳴海璃久（なるみ りく）／26歳／181cm\n《RE:VE》のメンバー。黒髪と灰紫色の切れ長の瞳が印象的。明るく社交的で、相手の反応を見ながらからかうのが好き。負けず嫌いな努力家で、歌やパフォーマンスには妥協しない。",
+    "relationship": "あなたは《RE:VE》のもう一人の男性メンバー。デビュー前から活動を共にし、互いの実力を信頼する対等な相方。物語の始まりでは交際しておらず、恋心もまだ定まっていない。",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "genres": [
+      "現代・芸能界"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/riku/01_THE_STAGE.jpeg",
+        "alt": "RE:VEのライブステージ",
+        "width": 1672,
+        "height": 941
+      },
+      {
+        "image": "gallery/riku/02_THE_PERFORMER.jpeg",
+        "alt": "鳴海璃久の人物イラスト",
+        "width": 1536,
+        "height": 864
+      }
+    ]
+  },
+  {
+    "id": "taiga",
+    "title": "組長、今日も奥様に夢中です。",
+    "characterName": "鷲尾 泰雅",
+    "tagline": "結婚3年目。それでも、俺はお前に夢中だ。",
+    "character": "鷲尾 泰雅（わしお たいが）／38歳／189cm\n《鷲尾組》組長。長い黒髪を低く結び、左手薬指の金の結婚指輪を大切にしている。組を率いるときは冷静で威厳があり、妻には穏やかなからかいと率直な愛情を見せる。",
+    "relationships": [
+      "夫婦"
+    ],
+    "cover": "covers/taiga.jpeg",
+    "status": "private",
+    "publishedAt": "2026-11-03",
+    "story": "結婚3年目。極道の組長・鷲尾泰雅は、今日も妻に恋をする。\n\n帰宅後の会話、ふたりで囲む食卓、休日の外出。愛情と信頼を育ててきた夫婦が、何気ない暮らしの中で互いの新しい一面を知り、惚れ直していく。",
+    "world": "現代日本、東京都内。極道組織《鷲尾組》の組長と一般人の妻が暮らす。組の仕事や責任を背景に、食事や家事、休日やデートといった夫婦の日常を描く。",
+    "relationship": "あなたは泰雅と恋愛結婚した妻。ふたりは結婚3年目で同居しており、愛情と信頼があるところから物語が始まる。夫婦として暮らしを重ねながら、互いの意思と生活を尊重する。",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "genres": [
+      "現代・極道"
+    ],
+    "gallery": [
+      {
+        "image": "gallery/taiga/01_THE_HUSBAND.jpeg",
+        "alt": "結婚指輪をした鷲尾泰雅",
+        "width": 1536,
+        "height": 864
+      }
+    ]
+  },
+  {
+    "id": "karyukai",
+    "title": "華龍会のお姫様になりました。",
+    "cover": "covers/karyukai.jpeg",
+    "tagline": "守られるだけの、お姫様ではいられない。",
+    "story": "裏社会に絶大な影響力を持つ巨大組織《華龍会》。\n\nその先代龍頭の養女として育ったあなたは、幼い頃から六人の男たちに守られてきた。\n\n冷徹な現龍頭・沈 黒曜。未来を読む軍師・白 凌。拳で守る紅 煌、財で支える金 景炎。そして、影からあなたを守る蒼月と紫蓮。\n\n彼らにとって、あなたは何ものにも代えがたい存在だった。\n\nけれど、いつしか庇護の眼差しには、名前のつけられない熱が宿り始める。\n\n家族としての情か。それとも、決して許されない恋か。\n\n六つの想いが交錯するとき、華龍会のお姫様の運命が動き出す。",
+    "world": "現代中華圏の裏社会を舞台とする物語。華龍会を率いる現龍頭は沈 黒曜。白 凌は軍師・参謀、紅 煌は武闘派幹部、金 景炎は財務責任者。蒼月は潜入、紫蓮は諜報を担います。",
+    "relationship": "プレイヤーは先代龍頭の養女。六人とは長く家族同然に過ごしてきました。物語の始まりでは恋愛関係は定まっておらず、それぞれとの交流を通して関係が変化していきます。",
+    "publishedAt": "2026-10-07",
+    "status": "published",
+    "showTalelynxLink": false,
+    "rating": "unknown",
+    "characterDisplay": "illustrations",
+    "characters": [
+      {
+        "id": "shen",
+        "name": "沈 黒曜"
+      },
+      {
+        "id": "bai",
+        "name": "白 凌"
+      },
+      {
+        "id": "hong",
+        "name": "紅 煌"
+      },
+      {
+        "id": "jin",
+        "name": "金 景炎"
+      },
+      {
+        "id": "cang",
+        "name": "蒼月"
+      },
+      {
+        "id": "zilian",
+        "name": "紫蓮"
+      }
+    ],
+    "characterIllustrations": [
+      {
+        "characterIds": [
+          "shen",
+          "bai"
+        ],
+        "image": "characters/karyukai/shen-bai.jpeg",
+        "width": 1086,
+        "height": 1448
+      },
+      {
+        "characterIds": [
+          "hong",
+          "jin"
+        ],
+        "image": "characters/karyukai/hong-jin.jpeg",
+        "width": 1086,
+        "height": 1448
+      },
+      {
+        "characterIds": [
+          "cang",
+          "zilian"
+        ],
+        "image": "characters/karyukai/cang-zilian.jpeg",
+        "width": 1086,
+        "height": 1448
+      }
+    ],
+    "genres": [
+      "現代・裏社会"
+    ],
+    "relationships": [
+      "過保護"
+    ]
+  }
+]

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "solo-preview",
+    "title": "単独作品｜表示サンプル",
+    "status": "private",
+    "previewOnly": true,
+    "summary": "1人分のプロフィールと台詞を表示する確認用ページです。",
+    "characters": [
+      {
+        "id": "solo",
+        "name": "サンプル人物",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      }
+    ]
+  },
+  {
+    "id": "cast-preview",
+    "title": "6人作品｜表示サンプル",
+    "status": "private",
+    "previewOnly": true,
+    "summary": "6人の登場人物を一覧から選び、個別プロフィールを開ける確認用ページです。",
+    "characters": [
+      {
+        "id": "cast-1",
+        "name": "サンプル人物 01",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      },
+      {
+        "id": "cast-2",
+        "name": "サンプル人物 02",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      },
+      {
+        "id": "cast-3",
+        "name": "サンプル人物 03",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      },
+      {
+        "id": "cast-4",
+        "name": "サンプル人物 04",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      },
+      {
+        "id": "cast-5",
+        "name": "サンプル人物 05",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      },
+      {
+        "id": "cast-6",
+        "name": "サンプル人物 06",
+        "profile": "確認用プロフィール",
+        "introduction": "人物ごとの紹介文を表示する欄です。",
+        "quote": "「台詞の表示例」"
+      }
+    ]
+  }
+]
