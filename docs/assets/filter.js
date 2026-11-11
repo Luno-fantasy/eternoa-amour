@@ -28,7 +28,6 @@ function filter() {
 
 if (form && cards.length) {
   form.hidden = false;
-  result.hidden = false;
   form.addEventListener('input', filter);
   form.addEventListener('reset', () => requestAnimationFrame(filter));
   form.addEventListener('submit', event => event.preventDefault());

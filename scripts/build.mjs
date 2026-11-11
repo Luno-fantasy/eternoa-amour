@@ -137,12 +137,10 @@ mkdirSync(staging, { recursive: true });
 write('', { base: './', active: 'HOME', body: `
 <section class="hero"><div class="wrap hero-inner${latest ? '' : ' hero-solo'}">
   <div class="hero-copy">
-    <p class="hero-brand" lang="en">Every Love, A Story.</p>
     <h1><span>物語の数だけ、</span><span>恋がある。</span></h1>
     ${latest ? `<div class="featured"><p class="eyebrow" lang="en">${latest.status === 'published' ? 'Latest Release' : 'Featured Title'}</p>
     <h2>${esc(latest.title)}</h2>
-    ${latest.tagline ? '<p class="tagline">' + esc(latest.tagline) + '</p>' : ''}
-    ${latest.summary ? '<p>' + esc(latest.summary) + '</p>' : ''}
+    ${latest.summary ? '<p>' + esc(latest.summary) + '</p>' : latest.tagline ? '<p class="tagline">' + esc(latest.tagline) + '</p>' : ''}
     ${button(workUrl(latest), '作品を見る')}</div>` : button('titles/', '作品一覧へ')}
   </div>
   ${latest ? `<a class="hero-cover" href="${workUrl(latest)}">${coverImage(latest, './', true)}</a>` : ''}
@@ -159,13 +157,12 @@ function select(key, label, options) {
       `<option value="${esc(value)}">${esc(value)}</option>`).join('')}</select></label>`;
 }
 write('titles/', { base: '../', active: 'TITLES', title: '作品一覧', script: true, body: `
-<section class="wrap section">${heading('Romance Collection', '作品一覧', 'h1')}
+<section class="wrap section titles-page">${heading('Romance Collection', '作品一覧', 'h1')}
 <form class="filters" role="search" hidden>
 <label>作品名・キャラクター名<input name="query" type="search" placeholder="タイトル・名前で検索"></label>
 ${select('genres', 'ジャンル', visible.flatMap(work => work.genres ?? []))}
 ${select('relationships', '関係性', visible.flatMap(work => work.relationships ?? []))}
-<button type="reset">クリア</button></form>
-<p class="result-count" role="status" hidden></p>
+<div class="filter-footer"><p class="result-count" role="status"></p><button type="reset">クリア</button></div></form>
 ${visible.length ? grid(visible, '../') : empty('掲載作品は準備中です。')}</section>` });
 write('news/', { base: '../', active: 'NEWS', title: '更新情報',
   body: `<section class="wrap section">${heading('News', '更新情報', 'h1')}${newsList(updates, '../')}</section>` });
