@@ -168,7 +168,20 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
 }
 
 .illustrated-characters .illustration-hint { margin-top: .5rem; color: var(--muted); font-size: .82rem; }
-.illustrated-characters ul { display: grid; gap: clamp(1rem, 4vw, 2rem); max-width: 660px; margin: 1.25rem auto 0; padding: 0; list-style: none; }
+.illustrated-characters ul {
+  --illustration-gap: clamp(.65rem, 2vw, 1.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--illustration-gap);
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.illustrated-characters li { flex: 0 0 calc((100% - 2 * var(--illustration-gap)) / 3); min-width: 0; }
+@media (max-width: 660px) {
+  .illustrated-characters li { flex-basis: calc((100% - var(--illustration-gap)) / 2); }
+}
 .character-illustration { display: block; cursor: zoom-in; }
 .character-illustration img { width: 100%; height: auto; }
 .character-viewer {

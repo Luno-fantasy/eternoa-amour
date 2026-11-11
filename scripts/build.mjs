@@ -234,7 +234,7 @@ function illustratedCharacters(work, base) {
       loading="lazy" decoding="async"></a></li>`;
   }).join('');
   return `<section class="detail-section illustrated-characters" id="characters">
-  ${heading('Characters', '登場人物')}<p class="illustration-hint">画像をタップして拡大</p>
+  ${heading('Characters', '登場人物')}<p class="illustration-hint">画像を選ぶと拡大できます</p>
   <ul>${panels}</ul>
   <dialog class="character-viewer" aria-label="キャラクター紹介画像">
     <div class="viewer-controls">
