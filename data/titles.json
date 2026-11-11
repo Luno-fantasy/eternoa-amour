@@ -11,7 +11,9 @@
     "cover": "covers/ashley.jpeg",
     "talelynxUrlCandidate": "https://talelynx.ai/chats/52867/info",
     "publishedAt": "2026-11-11",
-    "status": "private",
+    "status": "published",
+    "showTalelynxLink": false,
+    "rating": "unknown",
     "characters": [
       {
         "id": "ashley",
@@ -71,7 +73,10 @@
     "story": "裏社会に絶大な影響力を持つ巨大組織《華龍会》。\n\nその先代龍頭の養女として育ったあなたは、幼い頃から六人の男たちに守られてきた。\n\n冷徹な現龍頭・沈 黒曜。未来を読む軍師・白 凌。拳で守る紅 煌、財で支える金 景炎。そして、影からあなたを守る蒼月と紫蓮。\n\n彼らにとって、あなたは何ものにも代えがたい存在だった。\n\nけれど、いつしか庇護の眼差しには、名前のつけられない熱が宿り始める。\n\n家族としての情か。それとも、決して許されない恋か。\n\n六つの想いが交錯するとき、華龍会のお姫様の運命が動き出す。",
     "world": "現代中華圏の裏社会を舞台とする物語。華龍会を率いる現龍頭は沈 黒曜。白 凌は軍師・参謀、紅 煌は武闘派幹部、金 景炎は財務責任者。蒼月は潜入、紫蓮は諜報を担います。",
     "relationship": "プレイヤーは先代龍頭の養女。六人とは長く家族同然に過ごしてきました。物語の始まりでは恋愛関係は定まっておらず、それぞれとの交流を通して関係が変化していきます。",
-    "status": "private",
+    "publishedAt": "2026-11-11",
+    "status": "published",
+    "showTalelynxLink": false,
+    "rating": "unknown",
     "characterDisplay": "illustrations",
     "characters": [
       {
