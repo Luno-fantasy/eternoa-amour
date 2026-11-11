@@ -8,12 +8,12 @@ Talelynxで公開するオリジナル恋愛作品のギャラリー。GitHub Pa
 npm run dev
 ```
 
-ブラウザで http://localhost:3000/ を開くと、提供済みカバー5点と作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品だけが出力されます。現在、正式作品URL待ちのため公開用の掲載は0件です。
+ブラウザで http://localhost:3000/ を開くと、提供済みカバー5点と作品詳細を確認できます。確認用HTMLは `.preview/` に生成されます。公開用の `docs/` には `published` の作品だけが出力されます。現在、正式なTalelynx URL待ちのため公開用の掲載は0件です。
 
 ## 作品の登録・更新
 
 1. 正式カバーの原本を `source/covers/` に置きます。1:1の画像を使用します。追加画像は `source/gallery/<作品ID>/` に置きます。
-2. `data/titles.json` に作品情報を追加します。タイトル、人物名、短い紹介文、完成カバー、Talelynxでの公開日、正式な作品URLを確認してから `status` を `published` にします。
+2. `data/titles.json` に作品情報を追加します。タイトル、人物名、短い紹介文、完成カバー、Talelynxでの公開日、正式な作品URLまたは個別ルートURLを確認してから `status` を `published` にします。
 3. `npm run build` を実行し、データ、画像、更新された `docs/` を同じPRに含めます。公開済み作品は公開日の新しい順に表示され、先頭がHOMEの特集になります。作品IDは詳細URLに使われるため、公開後は維持します。
 
 | キー | 内容 |
@@ -39,3 +39,17 @@ npm run dev
 ## 公開
 
 レビュー承認後にPRをマージし、GitHubの **Settings → Pages → Deploy from a branch → main → /docs** を選択します。詳細ページの共有情報はビルド時に生成されます。公開後、作品ごとの詳細URLとOGP画像URLを確認してください。公開先を変更する場合は `scripts/build.mjs` の `site` を変更して再ビルドします。
+
+## 登場人物と個別ルート
+
+作品の `characters` に人物を配列で登録します。人物ごとの `id`（作品内で一意の半角小文字・数字・ハイフン）と `name` が必須です。任意項目は次の通りです。
+
+| キー | 内容 |
+| --- | --- |
+| `profile`, `introduction`, `quote` | プロフィール、紹介文、台詞。空欄は表示されません |
+| `image`, `imageAlt` | 提供済み人物画像の `source/` 相対パスと代替テキスト |
+| `talelynxUrl`, `rating` | 人物ルートの正式URLと年齢区分。年齢区分の省略時は作品の値を使います |
+
+作品詳細は `titles/<作品ID>/`、人物プロフィール兼ルート案内は `titles/<作品ID>/characters/<人物ID>/` です。作品共通のTalelynx URLは作品側に、個別ルートのURLは各人物に登録します。公開には共通URLまたは個別ルートURLが必要です。既存の `characterName` と `character` だけの作品も表示できます。検索は旧人物名欄と人物配列の名前を対象にします。
+
+`npm run dev` で作品一覧から「単独作品｜表示サンプル」「6人作品｜表示サンプル」を開けます。サンプルのデータは `data/character-previews.json` にあり、公開ビルドには含まれません。
