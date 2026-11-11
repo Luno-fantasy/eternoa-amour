@@ -214,3 +214,15 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
 .viewer-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
 .viewer-scroll img { width: 100%; height: auto; }
 .viewer-scroll.is-zoomed img { width: auto; max-width: none; }
+
+/* HOME: introduce the brand before the featured work. */
+.home-motto { background: var(--purple); color: var(--ivory); text-align: center; padding: clamp(2rem, 5vw, 3.8rem) 1rem; }
+.home-motto h1 { font-size: clamp(1.45rem, 4vw, 2.8rem); letter-spacing: .04em; }
+.about-home { padding-block: clamp(2rem, 4vw, 3rem); }
+.about-home > p { margin-top: .8rem; }
+.about-home .button { margin-top: 1rem; }
+.hero .featured { border-top: 0; margin-top: 0; padding-top: 0; }
+@media (max-width: 660px) {
+  .home-motto { padding-block: 1.65rem; }
+  .hero .hero-cover { grid-row: 1; }
+}
