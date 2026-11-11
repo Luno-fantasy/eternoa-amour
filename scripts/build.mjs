@@ -200,9 +200,12 @@ function portrait(person, base) {
     alt="${esc(person.imageAlt ?? person.name)}" loading="lazy" decoding="async">` : '';
 }
 function profile(person, base, level) {
+  const name = esc(person.name);
+  const nameBreak = level === 'h3' && person.id === 'ashley' ? name.lastIndexOf('・') + 1 : 0;
+  const displayName = nameBreak ? name.slice(0, nameBreak) + '<wbr>' + name.slice(nameBreak) : name;
   return `<article class="character-profile${person.image ? ' with-portrait' : ''}">
   ${portrait(person, base)}<div class="profile-copy">
-  <${level}>${esc(person.name)}</${level}>
+  <${level} id="character-name-${person.id}">${displayName}</${level}>
   ${person.profile ? '<div class="profile-facts">' + paragraphs(person.profile) + '</div>' : ''}
   ${person.quote ? '<blockquote>' + esc(person.quote) + '</blockquote>' : ''}
   ${person.introduction ? paragraphs(person.introduction) : ''}
