@@ -62,5 +62,69 @@
     ],
     "cover": "covers/taiga.jpeg",
     "status": "private"
+  },
+  {
+    "id": "karyukai",
+    "title": "華龍会のお姫様になりました。",
+    "cover": "covers/karyukai.jpeg",
+    "world": "現代中華圏の裏社会を舞台とする物語。華龍会を率いる現龍頭は沈 黒曜。白 凌は軍師・参謀、紅 煌は武闘派幹部、金 景炎は財務責任者。蒼月は潜入、紫蓮は諜報を担います。",
+    "relationship": "プレイヤーは先代龍頭の養女。六人とは長く家族同然に過ごしてきました。物語の始まりでは恋愛関係は定まっておらず、それぞれとの交流を通して関係が変化していきます。",
+    "status": "private",
+    "characterDisplay": "illustrations",
+    "characters": [
+      {
+        "id": "shen",
+        "name": "沈 黒曜"
+      },
+      {
+        "id": "bai",
+        "name": "白 凌"
+      },
+      {
+        "id": "hong",
+        "name": "紅 煌"
+      },
+      {
+        "id": "jin",
+        "name": "金 景炎"
+      },
+      {
+        "id": "cang",
+        "name": "蒼月"
+      },
+      {
+        "id": "zilian",
+        "name": "紫蓮"
+      }
+    ],
+    "characterIllustrations": [
+      {
+        "characterIds": [
+          "shen",
+          "bai"
+        ],
+        "image": "characters/karyukai/shen-bai.jpeg",
+        "width": 1086,
+        "height": 1448
+      },
+      {
+        "characterIds": [
+          "hong",
+          "jin"
+        ],
+        "image": "characters/karyukai/hong-jin.jpeg",
+        "width": 1086,
+        "height": 1448
+      },
+      {
+        "characterIds": [
+          "cang",
+          "zilian"
+        ],
+        "image": "characters/karyukai/cang-zilian.jpeg",
+        "width": 1086,
+        "height": 1448
+      }
+    ]
   }
 ]

@@ -166,3 +166,28 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
     word-break: keep-all;
   }
 }
+
+.illustrated-characters .illustration-hint { margin-top: .5rem; color: var(--muted); font-size: .82rem; }
+.illustrated-characters ul { display: grid; gap: clamp(1rem, 4vw, 2rem); max-width: 660px; margin: 1.25rem auto 0; padding: 0; list-style: none; }
+.character-illustration { display: block; cursor: zoom-in; }
+.character-illustration img { width: 100%; height: auto; }
+.character-viewer {
+  position: fixed;
+  inset: 0;
+  width: min(100%, 900px);
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: #17131b;
+  color: var(--ivory);
+}
+.character-viewer[open] { display: flex; flex-direction: column; }
+.character-viewer::backdrop { background: #17131bed; }
+.viewer-controls { display: flex; justify-content: flex-end; gap: .6rem; padding: .5rem 1rem; border-bottom: 1px solid #cdb28c45; }
+.viewer-controls button { min-height: 44px; padding: 0 .85rem; border: 1px solid var(--gold); background: transparent; color: var(--ivory); font: inherit; cursor: pointer; }
+.viewer-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.viewer-scroll img { width: 100%; height: auto; }
+.viewer-scroll.is-zoomed img { width: auto; max-width: none; }

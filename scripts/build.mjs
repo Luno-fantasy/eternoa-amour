@@ -50,6 +50,19 @@ for (const work of works) {
     if (person.talelynxUrl && !talelynxLink(person.talelynxUrl)) throw new Error(work.id + ': 人物ルートURL');
     if (person.rating && !['all-ages', 'r18'].includes(person.rating)) throw new Error(work.id + ': 人物ルートのrating');
   }
+  if (work.characterDisplay === 'illustrations') {
+    const assigned = new Set();
+    for (const panel of work.characterIllustrations ?? []) {
+      asset(panel.image);
+      if (!Number.isInteger(panel.width) || panel.width <= 0 || !Number.isInteger(panel.height) || panel.height <= 0 ||
+          panel.characterIds?.length !== 2) throw new Error(work.id + ': 人物紹介画像の寸法と組み合わせを確認してください。');
+      for (const id of panel.characterIds) {
+        if (!characterIds.has(id) || assigned.has(id)) throw new Error(work.id + ': 人物紹介画像の人物ID');
+        assigned.add(id);
+      }
+    }
+    if (!assigned.size || assigned.size !== characterIds.size) throw new Error(work.id + ': 全員の紹介画像が必要です。');
+  }
   if (work.talelynxUrl && !talelynxLink(work.talelynxUrl)) throw new Error(work.id + ': Talelynx作品URL');
   if (work.status === 'published' && (!work.title?.trim() || !names(work).some(name => name.trim()) ||
       !work.cover || !work.summary?.trim() || !validDate(work.publishedAt) ||
@@ -81,7 +94,7 @@ const heading = (english, japanese, level = 'h2') =>
 const button = (href, label, extra = '') =>
   `<a class="button" href="${esc(href)}" ${extra}>${label}<span aria-hidden="true">↗</span></a>`;
 
-function layout({ base, route, active, title, description = motto, cover, body, script = false }) {
+function layout({ base, route, active, title, description = motto, cover, body, script = false, illustrationViewer = false }) {
   const address = new URL(route, site).href;
   const pageTitle = title ? title + ' | ' + brand : brand;
   const og = (key, value) => `<meta property="og:${key}" content="${esc(value)}">`;
@@ -102,7 +115,7 @@ ${twitter('card', 'summary')}${twitter('title', pageTitle)}${twitter('descriptio
 ${shareImage ? og('image', shareImage) + og('image:alt', title + 'のカバー') +
   twitter('image', shareImage) + twitter('image:alt', title + 'のカバー') : ''}
 <link rel="stylesheet" href="${base}assets/style.css">
-${script ? `<script src="${base}assets/filter.js" defer></script>` : ''}
+${script ? `<script src="${base}assets/filter.js" defer></script>` : ''}${illustrationViewer ? `<script src="${base}assets/character-viewer.js" defer></script>` : ''}
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -211,7 +224,29 @@ function profile(person, base, level) {
   ${person.introduction ? paragraphs(person.introduction) : ''}
   </div></article>`;
 }
+function illustratedCharacters(work, base) {
+  const cast = new Map(characters(work).map(person => [person.id, person.name]));
+  const panels = work.characterIllustrations.map(panel => {
+    const label = esc(panel.characterIds.map(id => cast.get(id)).join(' × '));
+    const image = base + 'images/' + esc(panel.image);
+    return `<li><a class="character-illustration" href="${image}" aria-label="${label}の紹介画像を拡大">
+      <img src="${image}" width="${panel.width}" height="${panel.height}" alt="${label}の紹介画像"
+      loading="lazy" decoding="async"></a></li>`;
+  }).join('');
+  return `<section class="detail-section illustrated-characters" id="characters">
+  ${heading('Characters', '登場人物')}<p class="illustration-hint">画像をタップして拡大</p>
+  <ul>${panels}</ul>
+  <dialog class="character-viewer" aria-label="キャラクター紹介画像">
+    <div class="viewer-controls">
+      <button type="button" class="viewer-zoom" aria-pressed="false">拡大</button>
+      <form method="dialog"><button type="submit">閉じる</button></form>
+    </div>
+    <div class="viewer-scroll" tabindex="0"><img alt=""></div>
+  </dialog>
+  </section>`;
+}
 function characterSection(work, base) {
+  if (work.characterDisplay === 'illustrations') return illustratedCharacters(work, base);
   const cast = characters(work);
   if (!cast.length) return work.character?.trim()
     ? `<section class="detail-section" id="characters">${heading('Character', '登場人物')}${paragraphs(work.character)}</section>` : '';
@@ -229,7 +264,7 @@ for (const work of visible) {
   const detail = (label, japanese, value) => value?.trim() ?
     `<section class="detail-section">${heading(label, japanese)}${paragraphs(value)}</section>` : '';
   const play = work.status === 'published' ? playLink(work.talelynxUrl, work.rating) : '';
-  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.title, cover: work.cover, body: `
+  write(workUrl(work), { base, title: work.title, description: work.summary ?? work.title, cover: work.cover, illustrationViewer: work.characterDisplay === 'illustrations', body: `
   <section class="detail-hero"><div class="wrap">
   <a class="back" href="../">← 作品一覧</a><div class="detail-intro${work.cover ? '' : ' text-only'}">
   ${work.cover ? coverImage(work, base, true) : ''}<div>
@@ -250,6 +285,7 @@ for (const work of visible) {
   alt="${esc(item.alt ?? '')}" loading="lazy" decoding="async">`).join('')}</div></section>` : ''}
   </div>` });
   for (const person of characters(work)) {
+    if (work.characterDisplay === 'illustrations' && !person.talelynxUrl) continue;
     const characterBase = '../../../../';
     const rating = person.rating ?? work.rating;
     const routeLink = work.status === 'published' ? person.talelynxUrl : undefined;
@@ -272,9 +308,11 @@ function copy(from, to) {
   copyFileSync(from, target);
 }
 for (const name of ['style.css', 'filter.js']) copy('source/' + name, 'assets/' + name);
+if (visible.some(work => work.characterDisplay === 'illustrations')) copy('source/character-viewer.js', 'assets/character-viewer.js');
 for (const work of visible) {
   const images = [work.cover, ...(work.gallery ?? []).map(item => item.image),
-    ...characters(work).map(person => person.image)].filter(Boolean);
+    ...characters(work).map(person => person.image),
+    ...(work.characterIllustrations ?? []).map(panel => panel.image)].filter(Boolean);
   for (const path of new Set(images)) {
     copy('source/' + path, 'images/' + path);
   }

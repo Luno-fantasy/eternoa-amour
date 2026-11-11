@@ -53,3 +53,5 @@ npm run dev
 作品詳細は `titles/<作品ID>/`、人物プロフィール兼ルート案内は `titles/<作品ID>/characters/<人物ID>/` です。作品共通のTalelynx URLは作品側に、個別ルートのURLは各人物に登録します。公開には共通URLまたは個別ルートURLが必要です。既存の `characterName` と `character` だけの作品も表示できます。検索は旧人物名欄と人物配列の名前を対象にします。
 
 `npm run dev` で作品一覧から「単独作品｜表示サンプル」「6人作品｜表示サンプル」を開けます。サンプルのデータは `data/character-previews.json` にあり、公開ビルドには含まれません。
+
+画像中心の人物紹介を使う作品は `characterDisplay` を `illustrations` に設定します。`characterIllustrations` に表示順で画像を登録し、各項目に `characterIds`（2人分の人物ID）、`image`（原本の相対パス）、`width` と `height`（原本のピクセル寸法）を記入します。各人物は1組だけに所属します。名前は作品一覧の検索に使われます。紹介画像は原寸画像へのリンクとしても機能します。
