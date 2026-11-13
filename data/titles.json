@@ -260,5 +260,50 @@
         "height": 720
       }
     ]
+  },
+  {
+    "id": "silvester",
+    "title": "ボス、今夜は俺に従え。",
+    "characterName": "シルヴェスター・ヴェイン",
+    "summary": "アンダーボスのシルヴェスター・ヴェインが、ボスに告げる。「今夜は俺に従え。」",
+    "cover": "covers/silvester.jpeg",
+    "status": "published",
+    "publishedAt": "2026-08-22",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "characters": [
+      {
+        "id": "silvester",
+        "name": "シルヴェスター・ヴェイン",
+        "profile": "役職　Underboss / Handler"
+      }
+    ]
+  },
+  {
+    "id": "luke",
+    "title": "聖騎士団長は“幼馴染み”をやめたい",
+    "characterName": "ルーク・アシュベリー",
+    "tagline": "俺の傲慢を、受け入れろ。",
+    "story": "王立ダンジョン協会で深層解析に携わるあなたと、第三聖騎士団長のルークは幼馴染み。軽口の裏に片想いを隠してきた彼は、あなたの護衛を第二騎士団が務めると聞き、いつもの余裕を崩す。",
+    "world": "深淵迷宮《アビス》が存在する世界。王立ダンジョン協会と聖騎士団が、物語の舞台となる。",
+    "relationship": "ルークとあなたは幼馴染み。ルークは長くあなたに想いを寄せ、その気持ちを軽口の裏に隠してきた。",
+    "cover": "covers/luke.jpeg",
+    "status": "published",
+    "publishedAt": "2026-09-11",
+    "showTalelynxLink": false,
+    "rating": "r18",
+    "genres": [
+      "ファンタジー"
+    ],
+    "relationships": [
+      "幼馴染み"
+    ],
+    "characters": [
+      {
+        "id": "luke",
+        "name": "ルーク・アシュベリー",
+        "profile": "年齢　27歳\n身長　189cm\n立場　第三聖騎士団長"
+      }
+    ]
   }
 ]
