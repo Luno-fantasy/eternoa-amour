@@ -1,0 +1,43 @@
+name: Build and publish AMOUR
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'source/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/build-amour.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: amour-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build static site and ÉTERNOA feed
+        run: npm run build
+      - name: Commit generated docs if changed
+        run: |
+          git add -A docs
+          if git diff --cached --quiet; then
+            echo "Generated docs are up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "build: refresh AMOUR site and ÉTERNOA feed"
+          git push
