@@ -58,3 +58,9 @@ npm run dev
 `npm run dev` で作品一覧から「単独作品｜表示サンプル」「6人作品｜表示サンプル」を開けます。サンプルのデータは `data/character-previews.json` にあり、公開ビルドには含まれません。
 
 画像中心の人物紹介を使う作品は `characterDisplay` を `illustrations` に設定します。`characterIllustrations` に表示順で画像を登録し、各項目に `characterIds`（2人分の人物ID）、`image`（原本の相対パス）、`width` と `height`（原本のピクセル寸法）を記入します。各人物は1組だけに所属します。名前は作品一覧の検索に使われます。紹介画像は原寸画像へのリンクとしても機能します。
+
+## ÉTERNOA HOMEへのお知らせ連携
+
+`data/news.json` の公開済み項目に `"showOnEternoa": true` を設定すると、`npm run build` 時に `docs/amour-feed.json` にそのお知らせが書き出されます。メインサイト ÉTERNOA のHOMEはこの公開フィードを読み込み、日付が到来した最新の1件を表示します。設定を省略、または `false` にした項目はメインサイトには表示されません。
+
+下書きや非公開作品に紐づくお知らせはフィードに含めません。AMOURのNEWSを変更した後は、従来どおり `npm run build` で `docs/` を更新し、公開してください。ÉTERNOA側の再ビルドやNEWS登録は不要です。公開フィードを取得できないときは、メインサイトの該当欄を非表示にします。
