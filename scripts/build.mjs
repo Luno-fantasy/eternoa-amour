@@ -100,6 +100,17 @@ visible.sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''))
 const visibleIds = new Set(visible.map(work => work.id));
 const updates = news.filter(item => (preview || item.status !== 'draft') && (!item.workId || visibleIds.has(item.workId)))
   .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
+// Public cross-site feed: opt-in only, never expose drafts or private works.
+const amourFeed = updates.filter(item => item.status === 'published' && item.showOnEternoa === true && validDate(item.date))
+  .map(item => ({
+    date: item.date,
+    category: item.category ?? 'NEWS',
+    title: item.title,
+    body: item.body ?? '',
+    url: item.workId && detailWorks.some(work => work.id === item.workId)
+      ? new URL('titles/' + item.workId + '/', site).href
+      : new URL('news/', site).href
+  }));
 const workUrl = work => 'titles/' + work.id + '/';
 const characterUrl = (work, person) => workUrl(work) + 'characters/' + person.id + '/';
 const paragraphs = value => value.split(/\n+/).filter(Boolean).map(line => '<p>' + esc(line) + '</p>').join('');
@@ -369,6 +380,7 @@ for (const work of visible) {
     copy('source/' + path, 'images/' + path);
   }
 }
+writeFileSync(join(staging, 'amour-feed.json'), JSON.stringify(amourFeed, null, 2) + '\n');
 writeFileSync(join(staging, '.nojekyll'), '');
 rmSync(output, { recursive: true, force: true });
 renameSync(staging, output);
