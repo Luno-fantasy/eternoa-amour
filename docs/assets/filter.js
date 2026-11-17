@@ -1,5 +1,6 @@
 const form = document.querySelector('.filters');
 const cards = [...document.querySelectorAll('.cards .card')];
+const groups = [...document.querySelectorAll('[data-title-group]')];
 const result = document.querySelector('.result-count');
 const normalize = value => value.normalize('NFKC').toLocaleLowerCase('ja').replace(/\s/g, '');
 const index = cards.map(card => ({
@@ -23,6 +24,7 @@ function filter() {
     item.card.hidden = !matches;
     if (matches) count++;
   }
+  for (const group of groups) group.hidden = !group.querySelector('.card:not([hidden])');
   result.textContent = count ? count + '件の作品' : '条件に一致する作品はありません。';
 }
 

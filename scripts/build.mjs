@@ -231,6 +231,21 @@ function select(key, label, options) {
     [...new Set(options)].sort((a, b) => a.localeCompare(b, 'ja')).map(value =>
       `<option value="${esc(value)}">${esc(value)}</option>`).join('')}</select></label>`;
 }
+const seriesGroups = new Map();
+const standalone = [];
+for (const work of visible) {
+  const series = work.series?.trim();
+  if (series) {
+    if (!seriesGroups.has(series)) seriesGroups.set(series, []);
+    seriesGroups.get(series).push(work);
+  } else {
+    standalone.push(work);
+  }
+}
+const titleGroups = [...seriesGroups].sort(([a], [b]) => a.localeCompare(b, 'ja'));
+if (standalone.length) titleGroups.push(['その他の作品', standalone]);
+const groupedTitles = titleGroups.map(([label, works]) => `<section class="title-group" data-title-group>
+<h2>${esc(label)}</h2>${grid(works, '../')}</section>`).join('');
 write('titles/', { base: '../', active: 'TITLES', title: '作品一覧', script: true, body: `
 <section class="wrap section titles-page">${heading('Romance Collection', '作品一覧', 'h1')}
 <form class="filters" role="search" hidden>
@@ -238,7 +253,7 @@ write('titles/', { base: '../', active: 'TITLES', title: '作品一覧', script:
 ${select('genres', 'ジャンル', visible.flatMap(work => work.genres ?? []))}
 ${select('relationships', '関係性', visible.flatMap(work => work.relationships ?? []))}
 <div class="filter-footer"><p class="result-count" role="status"></p><button type="reset">クリア</button></div></form>
-${visible.length ? grid(visible, '../') : empty('掲載作品は準備中です。')}</section>` });
+${visible.length ? groupedTitles : empty('掲載作品は準備中です。')}</section>` });
 write('news/', { base: '../', active: 'NEWS', title: '更新情報',
   body: `<section class="wrap section">${heading('News', '更新情報', 'h1')}${newsList(updates, '../')}</section>` });
 write('about/', { base: '../', active: 'ABOUT', title: 'ブランド紹介',

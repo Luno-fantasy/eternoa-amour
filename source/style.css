@@ -226,3 +226,6 @@ nav a[aria-current], nav a:hover { color: var(--gold); border-bottom-color: curr
   .home-motto { padding-block: 1.65rem; }
   .hero .hero-cover { grid-row: 1; }
 }
+
+.title-group + .title-group { margin-top: clamp(2rem, 5vw, 4rem); }
+.title-group > h2 { margin: 0 0 1rem; font-size: clamp(1.25rem, 3vw, 1.65rem); }
