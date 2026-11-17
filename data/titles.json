@@ -12,7 +12,7 @@
     "talelynxUrlCandidate": "https://talelynx.ai/chats/52867/info",
     "publishedAt": "2026-11-11",
     "status": "published",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "unknown",
     "characters": [
       {
@@ -27,7 +27,8 @@
     "relationship": "互いの利益のため、離婚を前提に契約結婚したふたり。偽りの夫婦関係から、少しずつ本物の愛情が育まれていく。\n「悪女」は、プレイヤーに対する世間の評判を指します。評判の真偽や理由、プレイヤーの過去・性格・性別は自由に設定できます。",
     "genres": [
       "ファンタジー"
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/52867/info"
   },
   {
     "id": "rowan",
@@ -41,7 +42,7 @@
     "world": "物語の舞台は、王宮のある王都と、ローウェンが治めるアシュフォード侯爵領。舞踏会や貴族の社交界、彼がかつて身を置いた王国騎士団、街や夜市が物語の背景となる。",
     "character": "ローウェン・アシュフォード／30歳／188cm\n銅赤色の無造作な髪と琥珀色の瞳。社交的で機知に富む、アシュフォード侯爵家の現当主。元王国騎士で、剣の腕にも誇りを持つ。\n家名や剣技を政治利用されることを嫌い、父の引退を機に家督を継いで騎士団を去った。今も稽古や指導を楽しみ、領地の責任も果たす。公の場では礼節ある「私」、気を許した場では柔らかな「俺」。軽薄に見えて、軽い男ではない。",
     "relationship": "あなたは成人で、身分や職業、性格、ローウェンとの関係の進め方は自由に決められる。彼が気軽な誘いを重ね、やがて本気の言葉を探すようになっても、結婚や恋愛が自動的に決まることはない。応じるか、断るか、時間をかけるかはあなたの選択だ。",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "ファンタジー"
@@ -62,7 +63,8 @@
         "width": 1536,
         "height": 1024
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/52073/info"
   },
   {
     "id": "felix",
@@ -79,7 +81,7 @@
     "world": "獣人が暮らす世界。黒豹の獣人フェリクスが治めるヴァルグレイ辺境領では、ふたりがかつて暮らした城と、再会の場となる城下町が物語の舞台となる。",
     "character": "フェリクス・ヴァルグレイ／29歳／190cm\n黒髪に金の瞳を持つ、夜王種の黒豹獣人。ヴァルグレイ辺境伯で、「黒き死神」の異名を持つ。\n大切な相手を守ろうとする一方、気持ちを言葉にするのは苦手。番との再会を機に、自分の優しさをどう届けるか、手探りで学び直していく。",
     "relationship": "あなたは、彼のもとを去った獣人の番。再会をきっかけに、彼はあなたの話を聞こうとする。彼と話すか、どこまで近づくか、もう一度関係を築くかは、あなたが選べる。",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "獣人ファンタジー"
@@ -92,7 +94,8 @@
         "height": 720
       }
     ],
-    "series": "番シリーズ"
+    "series": "番シリーズ",
+    "talelynxUrl": "https://talelynx.ai/chats/52454/info"
   },
   {
     "id": "riku",
@@ -109,7 +112,7 @@
     "world": "現代日本。すでに人気と実績を持つ男性アイドルデュオ《RE:VE》は、ライブやツアー、歌唱・ダンス、MV、音楽番組、雑誌、広告、ファンミーティングなどの活動を続けている。\\n\\n恋人同士のようなファンサは仕事上の演出で、公式に交際を装っているわけではない。華やかなステージと、互いの仕事を尊重する舞台裏の両方が物語の舞台となる。",
     "character": "鳴海璃久（なるみ りく）／26歳／181cm\n艶のある黒髪と切れ長の灰紫の瞳が印象的な《RE:VE》のメインボーカル。黒と青紫のステージ衣装にシルバーアクセサリーを合わせる。\n社交的で自信があり、歌唱とファンサに長けたプロ。甘い言葉も軽い挑発も自然にこなすが、相方やスタッフの判断を尊重し、仕事には真剣。舞台裏では気安い軽口を交わし、相方の実力を信頼している。",
     "relationship": "あなたは《RE:VE》のもう一人の成人男性メンバー。璃久とデビュー以来活動してきた対等な相方だ。名前や容姿、性格、過去は自由に決められる。ファンサの許容範囲を尊重しながら、仕事や日常の積み重ねのなかで関係がどう変わるかは、ふたり次第。",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "現代・芸能界"
@@ -127,7 +130,8 @@
         "width": 1536,
         "height": 864
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/51365/info"
   },
   {
     "id": "taiga",
@@ -144,7 +148,7 @@
     "story": "結婚3年目。極道の組長・鷲尾泰雅は、今日も妻に恋をする。\n\n先に惚れたのは泰雅だった。自分の仕事を隠さず、誠実に想いを伝え、信頼を重ねて恋人になった。三年前、35歳の彼は指輪を用意し、いつになく緊張しながら結婚を申し込んだ。\n\nそして今。仕事から帰って交わすひと言、ふたりで囲む食卓、休日の外出。組長としての責任は自分で背負いながら、妻には今日も自分から「愛してる」と伝える。夫婦になってからも、何度だって惚れ直す日々の物語。",
     "world": "現代の東京。極道組織《鷲尾組》を率いる泰雅と、一般人の妻が暮らしている。組の仕事と、食事や家事、休日をともに過ごす夫婦の時間が、ふたりの日常を形づくる。",
     "relationship": "あなたは極道とは無縁の一般人として育ち、泰雅と恋愛結婚した成人女性。結婚3年目の今、ふたりの間にはすでに信頼と親しさがある。年齢や職業、容姿、性格は自由。泰雅は組の責任を妻に背負わせず、妻自身の暮らしや選択を大切にする。恋を一から始めるのではなく、夫婦としてこれからも日常を重ねていく。",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "現代・極道"
@@ -156,7 +160,8 @@
         "width": 1536,
         "height": 864
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/51663/info"
   },
   {
     "id": "karyukai",
@@ -168,7 +173,7 @@
     "relationship": "プレイヤーは先代龍頭の養女。六人とは長く家族同然に過ごしてきました。物語の始まりでは恋愛関係は定まっておらず、それぞれとの交流を通して関係が変化していきます。",
     "publishedAt": "2026-10-07",
     "status": "published",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "unknown",
     "characterDisplay": "illustrations",
     "characters": [
@@ -231,7 +236,8 @@
     ],
     "relationships": [
       "過保護"
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/46710/info"
   },
   {
     "id": "yato",
@@ -245,7 +251,7 @@
     "world": "霧深い森と古社を抱く禁足地《夜刀ヶ淵》。百年ごとに蓄積する神気を、人と蛇神の気を調和させて鎮めるのが《添い臥しの儀》だ。日没から日の出までのあいだ、人が眠ると魂が神気に呑まれる。夜刀と手をつなぎ、体温を分け合うことが、人の魂を守る。",
     "character": "夜刀（やと）／190cm\n水脈と山の均衡を守り、夜刀ヶ淵を治める蛇神。千年以上を生き、長い黒髪と金の蛇眼を持つ。尊大で寡黙だが義理堅く、かつて人間の伴侶が寿命を迎えるまで寄り添った。",
     "relationship": "あなたは《添い臥しの儀》に選ばれた成人。夜刀と初めて会うのは、儀式の夜の古社。夜が明ければ村へ帰れる。その先で彼とどんな関係を築くかは、あなたが選べる。",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "和風ダークファンタジー"
@@ -260,7 +266,8 @@
         "width": 1280,
         "height": 720
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/53274/info"
   },
   {
     "id": "silvester",
@@ -269,7 +276,7 @@
     "cover": "covers/silvester.jpeg",
     "status": "published",
     "publishedAt": "2026-08-22",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "characters": [
       {
@@ -290,7 +297,8 @@
         "width": 1280,
         "height": 720
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/33862/info"
   },
   {
     "id": "luke",
@@ -303,7 +311,7 @@
     "cover": "covers/luke.jpeg",
     "status": "published",
     "publishedAt": "2026-09-11",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "genres": [
       "ファンタジー"
@@ -325,7 +333,8 @@
         "width": 1280,
         "height": 768
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/36580/info"
   },
   {
     "id": "luca",
@@ -344,7 +353,7 @@
     "cover": "covers/luca.jpeg",
     "publishedAt": "2026-11-14",
     "status": "published",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "characters": [
       {
@@ -354,7 +363,8 @@
         "introduction": "短いワインレッドの髪と琥珀色の瞳。スバルの接客に刺激を受けてLAPINに入り、売上でも接客技術でもNo.1を目指す。観察力が鋭く、軽口や駆け引きは得意。本気になるほど冗談が減り、隠していた本音がこぼれる。"
       }
     ],
-    "series": "LAPIN"
+    "series": "LAPIN",
+    "talelynxUrl": "https://talelynx.ai/chats/53315/info"
   },
   {
     "id": "leold",
@@ -373,7 +383,7 @@
     "cover": "covers/leold.jpeg",
     "publishedAt": "2026-11-15",
     "status": "published",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "characters": [
       {
@@ -383,7 +393,8 @@
         "introduction": "氷青を帯びた白銀の髪と、青緑の瞳を持つ白虎の獣人。寡黙で冷静、軍務には厳格。恋愛には不器用で、気遣いは言葉よりも行動に表れる。"
       }
     ],
-    "series": "番シリーズ"
+    "series": "番シリーズ",
+    "talelynxUrl": "https://talelynx.ai/chats/53446/info"
   },
   {
     "id": "ei",
@@ -402,7 +413,7 @@
     "cover": "covers/ei.jpeg",
     "publishedAt": "2026-11-17",
     "status": "published",
-    "showTalelynxLink": false,
+    "showTalelynxLink": true,
     "rating": "r18",
     "characters": [
       {
@@ -411,7 +422,8 @@
         "profile": "読み　たかせ あきら\n年齢　23歳\n身長　190cm\n所属　《灰鴉》実働班",
         "introduction": "アッシュシルバーの髪と灰青の瞳。気さくな関西弁と挑発的な笑みで相手の反応をうかがう。自由奔放で、任務中の判断は冷静。あなたを「先輩」と呼ぶ。"
       }
-    ]
+    ],
+    "talelynxUrl": "https://talelynx.ai/chats/54118/info"
   },
   {
     "id": "lapin",
@@ -467,8 +479,9 @@
       }
     ],
     "status": "published",
-    "showTalelynxLink": false,
-    "rating": "r18"
+    "showTalelynxLink": true,
+    "rating": "r18",
+    "talelynxUrl": "https://talelynx.ai/chats/49730/info"
   },
   {
     "id": "nolan",
@@ -495,7 +508,8 @@
       }
     ],
     "status": "published",
-    "showTalelynxLink": false,
-    "rating": "r18"
+    "showTalelynxLink": true,
+    "rating": "r18",
+    "talelynxUrl": "https://talelynx.ai/chats/46680/info"
   }
 ]
