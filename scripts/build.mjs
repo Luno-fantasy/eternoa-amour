@@ -264,9 +264,9 @@ write('about/', { base: '../', active: 'ABOUT', title: 'ブランド紹介',
 
 function playLink(url, rating, label = 'PLAY ON TALELYNX') {
   if (!url) return '';
+  const requirements = rating === 'r18' ? 'ログインや年齢確認、閲覧設定の変更' : 'ログイン';
   return `<div class="play">${button(url, label, 'aria-describedby="play-note"')}
-    <p id="play-note">Talelynxでの閲覧にはログインが必要な場合があります。${rating === 'r18' ?
-    ' R18作品は年齢確認や閲覧設定が必要な場合があります。Talelynxの画面に沿ってお進みください。' : ''}</p></div>`;
+    <p id="play-note">Talelynxで作品をお楽しみいただくには、${requirements}が必要な場合があります。</p></div>`;
 }
 function portrait(person, base) {
   return person.image ? `<img class="portrait" src="${base}images/${esc(person.image)}"
