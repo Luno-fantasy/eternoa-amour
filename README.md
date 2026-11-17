@@ -61,6 +61,6 @@ npm run dev
 
 ## ÉTERNOA HOMEへのお知らせ連携
 
-`data/news.json` の公開済み項目に `"showOnEternoa": true` を設定すると、`npm run build` 時に `docs/amour-feed.json` にそのお知らせが書き出されます。メインサイト ÉTERNOA のHOMEはこの公開フィードを読み込み、日付が到来した最新の1件を表示します。設定を省略、または `false` にした項目はメインサイトには表示されません。
+AMOURで公開済みの作品に紐づく公開告知（`NEW RELEASE`）は、`npm run build` 時に `docs/amour-feed.json` に書き出されます。個別に連携を止める場合は `"showOnEternoa": false`、公開告知以外の公開済み記事も連携する場合は `"showOnEternoa": true` を指定します。下書きや未公開作品に紐づくお知らせは対象外です。
 
-下書きや非公開作品に紐づくお知らせはフィードに含めません。AMOURのNEWSを変更した後は、従来どおり `npm run build` で `docs/` を更新し、公開してください。ÉTERNOA側の再ビルドやNEWS登録は不要です。公開フィードを取得できないときは、メインサイトの該当欄を非表示にします。
+AMOURの配信後、ÉTERNOAのHOMEは公開フィードから日本時間で掲載日を迎えた最新の1件を表示します。ÉTERNOA側の再ビルドは不要です。フィードを取得できない場合は該当欄を非表示にします。

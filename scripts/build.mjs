@@ -100,8 +100,12 @@ visible.sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''))
 const visibleIds = new Set(visible.map(work => work.id));
 const updates = news.filter(item => (preview || item.status !== 'draft') && (!item.workId || visibleIds.has(item.workId)))
   .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
-// Public cross-site feed: opt-in only, never expose drafts or private works.
-const amourFeed = updates.filter(item => item.status === 'published' && item.showOnEternoa === true && validDate(item.date))
+const publishedWorkIds = new Set(works.filter(work => work.status === 'published').map(work => work.id));
+const amourFeed = updates.filter(item => {
+  if (item.status !== 'published' || !validDate(item.date) || item.showOnEternoa === false) return false;
+  if (item.workId && !publishedWorkIds.has(item.workId)) return false;
+  return item.showOnEternoa === true || (item.category === 'NEW RELEASE' && publishedWorkIds.has(item.workId));
+})
   .map(item => ({
     date: item.date,
     category: item.category ?? 'NEWS',
