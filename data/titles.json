@@ -587,5 +587,34 @@
     ],
     "publishedAt": "2026-11-20",
     "talelynxUrl": "https://talelynx.ai/chats/54426/info"
+  },
+  {
+    "id": "oboro",
+    "title": "九尾の狐は、番にだけ嘘をつけない",
+    "tagline": "二百年の余裕を、九本の尾が裏切っていく。",
+    "story": "春の庭園で、九尾の白狐・薄羽 朧とお茶を共にすることになったあなた。微笑みを絶やさない彼の本心は、言葉だけでは読み取れない。けれど、会うたびに少しずつ変わる九本の尾の仕草が、彼の隠した想いを伝えてくる。",
+    "world": "人間と獣人が共に暮らす東方の王国、鳳華国。薄羽家当主の朧は藤霞郷を治め、藤の花が咲く庭を持つ月霞御殿で暮らしている。",
+    "relationship": "春の出会いから、朧はあなたに少しずつ惹かれていく。その想いが番の絆へとつながることを、出会ったばかりの彼はまだ知らない。",
+    "genres": [
+      "和風ファンタジー"
+    ],
+    "relationships": [
+      "番"
+    ],
+    "status": "published",
+    "rating": "unknown",
+    "showTalelynxLink": true,
+    "cover": "covers/oboro.jpeg",
+    "characters": [
+      {
+        "id": "oboro",
+        "name": "薄羽 朧",
+        "profile": "200歳／187cm／九尾の白狐獣人／薄羽家当主",
+        "introduction": "優雅な振る舞いと食えない微笑みを見せる藤霞郷の領主。人をからかうのは得意だが、自分の感情は九本の尾に出てしまう。",
+        "quote": "おや。私のことが、そんなに気になりますか？"
+      }
+    ],
+    "publishedAt": "2026-11-22",
+    "talelynxUrl": "https://talelynx.ai/chats/53610/info"
   }
 ]
