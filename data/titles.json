@@ -617,5 +617,33 @@
     ],
     "publishedAt": "2026-11-22",
     "talelynxUrl": "https://talelynx.ai/chats/53610/info"
+  },
+  {
+    "id": "alf-layla",
+    "title": "千夜一恋譚《アルフ・ライラ》",
+    "tagline": "その願いを叶えよう。――代価は、お前自身だ",
+    "story": "満月の夜にだけ開かれる秘密の宴《千夜宮》。王家の密偵であるあなたは、踊り子に扮して月砂宮へ潜り込む。踊りを終えたあなたを待っていた宮殿の主、ナジームは、初めからその正体を見抜いていた。",
+    "world": "砂漠の王国サフィーラ王朝。その王都ルフ・アル＝ナジュムにある月砂宮では、望むものを手に入れるために相応の代価を差し出さなければならない。",
+    "relationship": "願いを叶える宮殿の主と、彼を探るために送り込まれた王家の密偵。正体を握られた夜から、二人の駆け引きが始まる。",
+    "genres": [
+      "アラビアンファンタジー"
+    ],
+    "relationships": [
+      "駆け引き"
+    ],
+    "status": "published",
+    "rating": "r18",
+    "showTalelynxLink": true,
+    "cover": "covers/alf-layla.jpeg",
+    "characters": [
+      {
+        "id": "najim",
+        "name": "ナジーム・アル＝ラシード",
+        "profile": "28歳／184cm／月砂宮の主・王家直属の願いの執行者",
+        "introduction": "「月を飼う男」と呼ばれる月砂宮の主。穏やかな笑みを浮かべて代価を告げ、願いを叶える。踊り子に扮したあなたの素性を知りながら、なぜか王家には告げようとしない。"
+      }
+    ],
+    "publishedAt": "2026-11-25",
+    "talelynxUrl": "https://talelynx.ai/chats/54651/info"
   }
 ]
